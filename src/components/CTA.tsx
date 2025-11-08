@@ -1,7 +1,15 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
+<<<<<<< HEAD
 
 const CTA = () => {
+=======
+import { useNavigate } from "react-router-dom";
+
+const CTA = () => {
+  const navigate = useNavigate();
+
+>>>>>>> e122ece (Updated project files)
   return (
     <section className="py-32 relative overflow-hidden">
       {/* Enhanced background effects */}
@@ -34,12 +42,31 @@ const CTA = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5 justify-center pt-6">
+<<<<<<< HEAD
             <Button variant="hero" size="lg" className="group shadow-2xl text-base h-14 px-8">
               Start Building Now
               <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
             </Button>
             <Button variant="glass" size="lg" className="text-base h-14 px-8">
               Schedule Demo
+=======
+            <Button
+              onClick={() => navigate('/chat')}
+              variant="hero"
+              size="lg"
+              className="group shadow-2xl text-base h-14 px-8"
+            >
+              Start Building Now
+              <ArrowRight className="ml-3 w-5 h-5 group-hover:translate-x-2 transition-transform duration-300" />
+            </Button>
+            <Button
+              onClick={() => navigate('/chat')}
+              variant="glass"
+              size="lg"
+              className="text-base h-14 px-8"
+            >
+              Get Started Free
+>>>>>>> e122ece (Updated project files)
             </Button>
           </div>
         </div>

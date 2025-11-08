@@ -1,10 +1,18 @@
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+<<<<<<< HEAD
+=======
+import { useNavigate } from "react-router-dom";
+>>>>>>> e122ece (Updated project files)
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+<<<<<<< HEAD
+=======
+  const navigate = useNavigate();
+>>>>>>> e122ece (Updated project files)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,15 +66,24 @@ const Navbar = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-2 lg:gap-4">
+<<<<<<< HEAD
             <Button variant="ghost" className="text-foreground text-sm lg:text-base px-3 lg:px-4">
               Sign In
             </Button>
             <Button variant="hero" className="shadow-glow text-sm lg:text-base px-4 lg:px-6">
+=======
+            <Button
+              onClick={() => navigate('/chat')}
+              variant="hero"
+              className="shadow-glow text-sm lg:text-base px-4 lg:px-6"
+            >
+>>>>>>> e122ece (Updated project files)
               Get Started
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
+<<<<<<< HEAD
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="md:hidden p-2 rounded-lg hover:bg-card/50 transition-colors"
@@ -77,6 +94,20 @@ const Navbar = () => {
               <Menu className="w-6 h-6" />
             )}
           </button>
+=======
+          <div className="md:hidden flex items-center gap-2">
+            <button
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="p-2 rounded-lg hover:bg-card/50 transition-colors"
+            >
+              {isMobileMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
+            </button>
+          </div>
+>>>>>>> e122ece (Updated project files)
         </div>
       </div>
 
@@ -95,10 +126,21 @@ const Navbar = () => {
               </a>
             ))}
             <div className="flex flex-col gap-3 pt-4">
+<<<<<<< HEAD
               <Button variant="ghost" className="w-full">
                 Sign In
               </Button>
               <Button variant="hero" className="w-full shadow-glow">
+=======
+              <Button
+                onClick={() => {
+                  navigate('/chat');
+                  setIsMobileMenuOpen(false);
+                }}
+                variant="hero"
+                className="w-full shadow-glow"
+              >
+>>>>>>> e122ece (Updated project files)
                 Get Started
               </Button>
             </div>
