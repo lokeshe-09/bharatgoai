@@ -2,14 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
 */
 
 @layer base {
   :root {
-<<<<<<< HEAD
-=======
     /* Light theme colors (default) */
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
@@ -56,7 +54,6 @@ All colors MUST be HSL.
   }
 
   .dark {
->>>>>>> e122ece (Updated project files)
     --background: 240 10% 3.9%;
     --foreground: 210 40% 98%;
 
@@ -68,10 +65,7 @@ All colors MUST be HSL.
 
     --primary: 263 70% 60%;
     --primary-foreground: 210 40% 98%;
-<<<<<<< HEAD
     --primary-glow: 263 70% 70%;
-=======
->>>>>>> e122ece (Updated project files)
 
     --secondary: 210 100% 56%;
     --secondary-foreground: 210 40% 98%;
@@ -89,7 +83,6 @@ All colors MUST be HSL.
     --input: 240 10% 15%;
     --ring: 263 70% 60%;
 
-<<<<<<< HEAD
     --radius: 0.75rem;
 
     --gradient-primary: linear-gradient(135deg, hsl(263 70% 55%), hsl(210 100% 60%));
@@ -97,18 +90,12 @@ All colors MUST be HSL.
     --gradient-card: linear-gradient(145deg, hsl(240 15% 8%), hsl(240 12% 14%));
     --gradient-text: linear-gradient(120deg, hsl(263 80% 70%), hsl(210 100% 65%), hsl(180 100% 60%));
     --gradient-accent: linear-gradient(135deg, hsl(30 100% 60%), hsl(263 70% 55%));
-    
+
     --shadow-glow: 0 0 80px hsl(263 70% 60% / 0.6), 0 0 150px hsl(263 70% 60% / 0.3);
     --shadow-card: 0 30px 100px -25px hsl(263 70% 35% / 0.8), 0 0 50px hsl(263 70% 55% / 0.25);
     --shadow-elegant: 0 20px 60px -15px hsl(240 10% 0% / 0.5);
-    
+
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-=======
-    --gradient-card: linear-gradient(145deg, hsl(240 15% 8%), hsl(240 12% 14%));
-    --shadow-glow: 0 0 80px hsl(263 70% 60% / 0.6), 0 0 150px hsl(263 70% 60% / 0.3);
-    --shadow-card: 0 30px 100px -25px hsl(263 70% 35% / 0.8), 0 0 50px hsl(263 70% 55% / 0.25);
-    --shadow-elegant: 0 20px 60px -15px hsl(240 10% 0% / 0.5);
->>>>>>> e122ece (Updated project files)
   }
 }
 
@@ -121,8 +108,6 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 }
-<<<<<<< HEAD
-=======
 
 /* Ultra-Premium Minimal Animations */
 @keyframes fade-in-up {
@@ -457,4 +442,3 @@ html {
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(180deg, hsl(var(--primary-glow)), hsl(var(--accent)));
 }
->>>>>>> e122ece (Updated project files)

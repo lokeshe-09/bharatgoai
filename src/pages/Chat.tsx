@@ -11,6 +11,7 @@ import rehypeHighlight from 'rehype-highlight';
 import rehypeKatex from 'rehype-katex';
 import 'highlight.js/styles/github-dark.css';
 import 'katex/dist/katex.min.css';
+import { logSessionStart, logUserInput, logAIResponse, logError } from '@/lib/terminalLogger';
 
 const Chat = () => {
   const [messages, setMessages] = useState<Message[]>([
@@ -31,6 +32,24 @@ const Chat = () => {
 
   // Chat-specific theme control
   useEffect(() => {
+    // ============================================
+    // LOGGING: Chat Session Initialized
+    // ============================================
+    console.log('╔═══════════════════════════════════════════════════════════════╗');
+    console.log('║              BHARATGOAI CHAT SESSION STARTED                  ║');
+    console.log('╠═══════════════════════════════════════════════════════════════╣');
+    console.log('│ Session Start:', new Date().toLocaleString());
+    console.log('│ Platform: BharatGoAi - India\'s Advanced AI Platform');
+    console.log('│ User Agent:', navigator.userAgent);
+    console.log('│ Screen:', `${window.screen.width}x${window.screen.height}`);
+    console.log('│ Viewport:', `${window.innerWidth}x${window.innerHeight}`);
+    console.log('╚═══════════════════════════════════════════════════════════════╝');
+    console.log('');
+    console.log('💡 TIP: All user inputs will be logged to the console AND terminal.');
+    console.log('📊 Monitor this console for detailed chat analytics.');
+    console.log('🖥️  Check your terminal/command prompt for user input logs.');
+    console.log('');
+
     // Set light mode for chat interface on mount
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.add('light');
@@ -87,6 +106,29 @@ const Chat = () => {
       timestamp: new Date(),
     };
 
+    // ============================================
+    // LOGGING: User Input to Console
+    // ============================================
+    console.log('╔═══════════════════════════════════════════════════════════════╗');
+    console.log('║                    USER INPUT LOG                             ║');
+    console.log('╠═══════════════════════════════════════════════════════════════╣');
+    console.log('│ Timestamp:', userMessage.timestamp.toLocaleString());
+    console.log('│ Message ID:', userMessage.id);
+    console.log('│ Role:', userMessage.role);
+    console.log('├───────────────────────────────────────────────────────────────┤');
+    console.log('│ User Input:');
+    console.log('│', userMessage.content);
+    console.log('├───────────────────────────────────────────────────────────────┤');
+    console.log('│ Input Length:', userMessage.content.length, 'characters');
+    console.log('│ Word Count:', userMessage.content.split(/\s+/).length, 'words');
+    console.log('│ Session Messages:', messages.length + 1);
+    console.log('╚═══════════════════════════════════════════════════════════════╝');
+
+    // ============================================
+    // LOGGING: User Input to TERMINAL (Simple)
+    // ============================================
+    logUserInput(userMessage.id, userMessage.content, messages.length + 1);
+
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
@@ -104,6 +146,9 @@ const Chat = () => {
 
     try {
       let fullResponse = '';
+      const startTime = Date.now();
+
+      console.log('🤖 Sending request to AI...');
 
       await sendMessageStream(
         userMessage.content,
@@ -119,9 +164,44 @@ const Chat = () => {
           );
         }
       );
+
+      const responseTime = Date.now() - startTime;
+
+      // ============================================
+      // LOGGING: AI Response
+      // ============================================
+      console.log('╔═══════════════════════════════════════════════════════════════╗');
+      console.log('║                   AI RESPONSE LOG                             ║');
+      console.log('╠═══════════════════════════════════════════════════════════════╣');
+      console.log('│ Timestamp:', new Date().toLocaleString());
+      console.log('│ Response ID:', assistantMessageId);
+      console.log('│ Response Time:', responseTime, 'ms');
+      console.log('├───────────────────────────────────────────────────────────────┤');
+      console.log('│ AI Response Preview:');
+      console.log('│', fullResponse.substring(0, 150) + (fullResponse.length > 150 ? '...' : ''));
+      console.log('├───────────────────────────────────────────────────────────────┤');
+      console.log('│ Response Length:', fullResponse.length, 'characters');
+      console.log('│ Response Words:', fullResponse.split(/\s+/).length, 'words');
+      console.log('│ Lines:', fullResponse.split('\n').length);
+      console.log('╚═══════════════════════════════════════════════════════════════╝');
+
     } catch (error: any) {
-      // Don't show technical errors to users
-      console.error('Error:', error);
+      // ============================================
+      // LOGGING: Error
+      // ============================================
+      console.log('╔═══════════════════════════════════════════════════════════════╗');
+      console.log('║                      ERROR LOG                                ║');
+      console.log('╠═══════════════════════════════════════════════════════════════╣');
+      console.log('│ Timestamp:', new Date().toLocaleString());
+      console.log('│ Error Type:', error?.name || 'Unknown');
+      console.log('│ Error Message:', error?.message || 'Unknown error');
+      console.log('├───────────────────────────────────────────────────────────────┤');
+      console.log('│ User Input that caused error:');
+      console.log('│', userMessage.content);
+      console.log('├───────────────────────────────────────────────────────────────┤');
+      console.log('│ Full Error Stack:');
+      console.error(error);
+      console.log('╚═══════════════════════════════════════════════════════════════╝');
 
       // Show friendly error message
       const friendlyMessage: Message = {

@@ -4,7 +4,9 @@
       "Read(//c/Users/Lokesh/OneDrive/Pictures/Screenshots/**)",
       "Bash(tree:*)",
       "Bash(find:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(cat:*)",
+      "Bash(git grep:*)"
     ],
     "deny": [],
     "ask": []
