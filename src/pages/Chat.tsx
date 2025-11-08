@@ -96,6 +96,13 @@ const Chat = () => {
     }
   }, [input]);
 
+  // Auto-focus input on component mount (like ChatGPT)
+  useEffect(() => {
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, []);
+
   const handleSend = async () => {
     if (!input.trim() || isLoading) return;
 
@@ -132,6 +139,13 @@ const Chat = () => {
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
+
+    // Auto-focus input after sending (for better UX)
+    setTimeout(() => {
+      if (textareaRef.current) {
+        textareaRef.current.focus();
+      }
+    }, 100);
 
     // Create empty assistant message for streaming
     const assistantMessageId = (Date.now() + 1).toString();
@@ -217,6 +231,13 @@ const Chat = () => {
       );
     } finally {
       setIsLoading(false);
+
+      // Re-focus input after AI response completes (for better UX like ChatGPT)
+      setTimeout(() => {
+        if (textareaRef.current) {
+          textareaRef.current.focus();
+        }
+      }, 100);
     }
   };
 
