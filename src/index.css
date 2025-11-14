@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
-All colors MUST be HSL.
-*/
+/* ULTRA-PREMIUM DESIGN SYSTEM
+   Hand-crafted color palette, gradients, and design tokens for world-class UI */
 
 @layer base {
   :root {
-    /* Light theme colors (default) */
+    /* Light theme - Premium professional palette */
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
@@ -40,20 +39,30 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
+    /* Premium gradient system */
     --gradient-primary: linear-gradient(135deg, hsl(168 76% 36%), hsl(175 65% 45%));
     --gradient-hero: linear-gradient(135deg, hsl(168 76% 36%), hsl(195 53% 52%), hsl(200 18% 46%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 98%), hsl(240 5% 96%));
     --gradient-text: linear-gradient(120deg, hsl(215 25% 27%), hsl(210 22% 35%), hsl(205 20% 45%));
     --gradient-accent: linear-gradient(135deg, hsl(168 76% 36%), hsl(195 53% 52%));
+    --gradient-luxury: linear-gradient(135deg, #6B4654 0%, #8B6F47 50%, #2C5F2D 100%);
+    --gradient-editorial: linear-gradient(145deg, #4A6E8A 0%, #2C5F2D 100%);
 
+    /* Premium shadow system */
     --shadow-glow: 0 0 80px hsl(168 76% 36% / 0.15), 0 0 150px hsl(168 76% 36% / 0.08);
     --shadow-card: 0 10px 40px -10px hsl(240 10% 3.9% / 0.15);
     --shadow-elegant: 0 10px 30px -10px hsl(240 10% 3.9% / 0.15);
+    --shadow-premium: 0 20px 60px -15px rgba(0, 0, 0, 0.2), 0 10px 30px -10px rgba(0, 0, 0, 0.1);
+    --shadow-luxury: 0 30px 80px -20px rgba(0, 0, 0, 0.25), 0 15px 40px -15px rgba(0, 0, 0, 0.15);
 
+    /* Premium transition curves */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --transition-elegant: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark {
+    /* Dark theme - Sophisticated luxury palette */
     --background: 240 10% 3.9%;
     --foreground: 210 40% 98%;
 
@@ -85,17 +94,21 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
+    /* Dark mode premium gradients */
     --gradient-primary: linear-gradient(135deg, hsl(168 76% 36%), hsl(175 65% 45%));
     --gradient-hero: linear-gradient(135deg, hsl(168 76% 36%), hsl(195 53% 52%), hsl(200 18% 46%));
     --gradient-card: linear-gradient(145deg, hsl(240 15% 8%), hsl(240 12% 14%));
     --gradient-text: linear-gradient(120deg, hsl(195 70% 65%), hsl(190 65% 55%), hsl(185 60% 50%));
     --gradient-accent: linear-gradient(135deg, hsl(168 76% 36%), hsl(195 53% 52%));
+    --gradient-luxury: linear-gradient(135deg, #A0674A 0%, #6B4654 50%, #4A6E8A 100%);
+    --gradient-editorial: linear-gradient(145deg, #2C5F2D 0%, #4A6E8A 100%);
 
+    /* Dark mode premium shadows */
     --shadow-glow: 0 0 80px hsl(168 76% 36% / 0.6), 0 0 150px hsl(168 76% 36% / 0.3);
     --shadow-card: 0 30px 100px -25px hsl(168 76% 25% / 0.8), 0 0 50px hsl(168 76% 36% / 0.25);
     --shadow-elegant: 0 20px 60px -15px hsl(240 10% 0% / 0.5);
-
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --shadow-premium: 0 20px 60px -15px rgba(0, 0, 0, 0.8), 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    --shadow-luxury: 0 30px 80px -20px rgba(0, 0, 0, 0.9), 0 15px 40px -15px rgba(0, 0, 0, 0.7);
   }
 }
 
