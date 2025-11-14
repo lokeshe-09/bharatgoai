@@ -18,110 +18,144 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-background pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+      {/* Advanced animated background */}
+      <div className="absolute inset-0 -z-10">
+        {/* Floating gradient orbs with glassmorphism */}
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-primary/30 via-primary/10 to-transparent rounded-full blur-3xl animate-float-smooth" />
+        <div className="absolute top-1/3 right-1/4 w-[500px] h-[500px] bg-gradient-to-bl from-accent/20 via-secondary/10 to-transparent rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: '1s' }} />
+        <div className="absolute bottom-1/4 left-1/3 w-80 h-80 bg-gradient-to-tr from-primary/20 to-transparent rounded-full blur-3xl animate-float-smooth" style={{ animationDelay: '2s' }} />
+
+        {/* Subtle grid overlay */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(162, 89, 255, 0.3) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(162, 89, 255, 0.3) 1px, transparent 1px)
+          `,
+          backgroundSize: '80px 80px'
+        }} />
+      </div>
+
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
             {/* Left Content */}
-            <div className="lg:col-span-7 space-y-8">
+            <div className="lg:col-span-7 space-y-10 animate-fade-in-up">
 
-              {/* Badge */}
-              <div className="inline-block">
-                <div className="bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                  भारत का #1 AI Platform
+              {/* Badge with glass effect */}
+              <div className="inline-block animate-scale-in">
+                <div className="glass-frosted text-primary px-6 py-3 rounded-full text-sm font-semibold shadow-lg relative overflow-hidden group">
+                  <span className="relative z-10">भारत का #1 AI Platform</span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </div>
               </div>
 
-              {/* Headline */}
-              <div className="space-y-4">
-                <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-foreground leading-tight">
+              {/* Headline with premium typography */}
+              <div className="space-y-5 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+                <h1 className="text-display text-6xl sm:text-7xl md:text-8xl text-foreground leading-[1.1]">
                   AI Intelligence
                   <br />
-                  <span className="text-primary">Reimagined</span>
+                  <span className="relative inline-block">
+                    <span className="bg-gradient-to-r from-primary via-primary/90 to-accent bg-clip-text text-transparent animate-gradient">
+                      Reimagined
+                    </span>
+                    <span className="absolute -inset-2 bg-gradient-to-r from-primary/20 to-accent/20 blur-2xl opacity-50 -z-10" />
+                  </span>
                   <br />
                   for India
                 </h1>
               </div>
 
-              {/* Description */}
-              <div className="max-w-2xl">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
+              {/* Description with refined spacing */}
+              <div className="max-w-2xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+                <p className="text-xl sm:text-2xl text-muted-foreground leading-relaxed font-light">
                   Experience the next generation of artificial intelligence.
                   Built with cutting-edge technology and designed specifically
                   for Indian businesses and developers.
                 </p>
               </div>
 
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+              {/* CTA Buttons with glass effects */}
+              <div className="flex flex-col sm:flex-row gap-5 pt-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <Button
                   onClick={() => navigate('/chat')}
                   size="lg"
-                  className="text-base px-8 py-6"
+                  className="group relative overflow-hidden text-lg px-10 py-7 bg-gradient-to-r from-primary via-primary/90 to-primary shadow-2xl hover:shadow-primary/50 transition-smooth"
                 >
-                  Get Started
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <span className="relative z-10 flex items-center gap-3">
+                    Get Started
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-base px-8 py-6"
+                  className="group glass-frosted text-lg px-10 py-7 border-border/50 hover:border-primary/50 shadow-lg transition-smooth"
                 >
-                  <Play className="mr-2 w-5 h-5" />
-                  Watch Demo
+                  <span className="flex items-center gap-3">
+                    <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                    Watch Demo
+                  </span>
                 </Button>
               </div>
 
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <div className="space-y-2">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary">
+              {/* Stats with glassmorphism */}
+              <div className="grid grid-cols-3 gap-6 pt-10 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+                <div className="glass-card p-6 group">
+                  <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
                     {(activeUsers/1000).toFixed(1)}K+
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground mt-2 font-medium">
                     Active Users
                   </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity rounded-b-3xl" />
                 </div>
 
-                <div className="space-y-2">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary">
+                <div className="glass-card p-6 group" style={{ animationDelay: '0.05s' }}>
+                  <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
                     {(queries/1000).toFixed(0)}K+
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground mt-2 font-medium">
                     Queries Processed
                   </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity rounded-b-3xl" />
                 </div>
 
-                <div className="space-y-2">
-                  <div className="text-3xl sm:text-4xl font-bold text-primary">
+                <div className="glass-card p-6 group" style={{ animationDelay: '0.1s' }}>
+                  <div className="text-4xl sm:text-5xl font-bold bg-gradient-to-br from-primary to-accent bg-clip-text text-transparent">
                     99.9%
                   </div>
-                  <div className="text-sm text-muted-foreground">
+                  <div className="text-sm text-muted-foreground mt-2 font-medium">
                     Uptime
                   </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity rounded-b-3xl" />
                 </div>
               </div>
             </div>
 
-            {/* Right Content */}
-            <div className="lg:col-span-5 space-y-6">
+            {/* Right Content with advanced glassmorphism */}
+            <div className="lg:col-span-5 space-y-5">
 
-              {/* Feature Cards */}
+              {/* Feature Cards with sophisticated glass effects */}
               <div className="space-y-4">
 
                 {/* Card 1 */}
-                <div className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Zap className="w-6 h-6 text-primary" />
+                <div className="glass-card group animate-scale-in" style={{ animationDelay: '0.5s' }}>
+                  <div className="flex items-start gap-5">
+                    <div className="relative">
+                      <div className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-butter">
+                        <Zap className="w-7 h-7 text-white" strokeWidth={2} />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                         Lightning Fast
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-muted-foreground leading-relaxed">
                         Get instant responses with our optimized AI infrastructure
                       </p>
                     </div>
@@ -129,16 +163,19 @@ const Hero = () => {
                 </div>
 
                 {/* Card 2 */}
-                <div className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Shield className="w-6 h-6 text-primary" />
+                <div className="glass-card group animate-scale-in" style={{ animationDelay: '0.6s' }}>
+                  <div className="flex items-start gap-5">
+                    <div className="relative">
+                      <div className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-butter">
+                        <Shield className="w-7 h-7 text-white" strokeWidth={2} />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                         Enterprise Security
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-muted-foreground leading-relaxed">
                         Military-grade encryption keeps your data safe and secure
                       </p>
                     </div>
@@ -146,16 +183,19 @@ const Hero = () => {
                 </div>
 
                 {/* Card 3 */}
-                <div className="bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-colors">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                      <Cpu className="w-6 h-6 text-primary" />
+                <div className="glass-card group animate-scale-in" style={{ animationDelay: '0.7s' }}>
+                  <div className="flex items-start gap-5">
+                    <div className="relative">
+                      <div className="w-14 h-14 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-butter">
+                        <Cpu className="w-7 h-7 text-white" strokeWidth={2} />
+                      </div>
+                      <div className="absolute inset-0 bg-gradient-to-br from-primary/50 to-accent/50 rounded-2xl blur-xl opacity-0 group-hover:opacity-70 transition-opacity" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-foreground mb-2">
+                      <h3 className="text-xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
                         Built for India
                       </h3>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-base text-muted-foreground leading-relaxed">
                         Native support for Hindi, Tamil, Bengali, and 20+ languages
                       </p>
                     </div>
@@ -163,27 +203,27 @@ const Hero = () => {
                 </div>
               </div>
 
-              {/* Trust Badge */}
-              <div className="bg-muted rounded-lg p-6 space-y-3">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <span className="text-xl">🇮🇳</span>
+              {/* Trust Badge with premium glassmorphism */}
+              <div className="glass-frosted rounded-3xl p-7 space-y-4 shadow-xl animate-scale-in" style={{ animationDelay: '0.8s' }}>
+                <div className="flex items-center gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-butter">
+                    <span className="text-2xl">🇮🇳</span>
                   </div>
-                  <span className="text-sm font-medium text-foreground">Made in India</span>
+                  <span className="text-base font-semibold text-foreground">Made in India</span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <span className="text-xl">⚡</span>
+                <div className="flex items-center gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-butter">
+                    <span className="text-2xl">⚡</span>
                   </div>
-                  <span className="text-sm font-medium text-foreground">Enterprise Grade</span>
+                  <span className="text-base font-semibold text-foreground">Enterprise Grade</span>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
-                    <span className="text-xl">★</span>
+                <div className="flex items-center gap-4 group cursor-pointer">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary/20 to-accent/20 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-butter">
+                    <span className="text-2xl">★</span>
                   </div>
-                  <span className="text-sm font-medium text-foreground">Premium Quality</span>
+                  <span className="text-base font-semibold text-foreground">Premium Quality</span>
                 </div>
               </div>
             </div>
