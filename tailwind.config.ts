@@ -14,7 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Plus Jakarta Sans', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Courier New', 'Consolas', 'monospace'],
+        mono: ['Courier New', 'Consolas', 'monospace'],
+        display: ['Impact', 'Arial Black', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -43,6 +45,14 @@ export default {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
         },
+        tertiary: {
+          DEFAULT: "hsl(var(--tertiary))",
+          foreground: "hsl(var(--tertiary-foreground))",
+        },
+        quaternary: {
+          DEFAULT: "hsl(var(--quaternary))",
+          foreground: "hsl(var(--quaternary-foreground))",
+        },
         popover: {
           DEFAULT: "hsl(var(--popover))",
           foreground: "hsl(var(--popover-foreground))",
@@ -58,11 +68,19 @@ export default {
         'gradient-card': 'var(--gradient-card)',
         'gradient-text': 'var(--gradient-text)',
         'gradient-accent': 'var(--gradient-accent)',
+        'gradient-chaos': 'var(--gradient-chaos)',
+        'gradient-burn': 'var(--gradient-burn)',
+        'gradient-electric': 'var(--gradient-electric)',
+        'gradient-retro': 'var(--gradient-retro)',
       },
       boxShadow: {
         'glow': 'var(--shadow-glow)',
         'card': 'var(--shadow-card)',
         'elegant': 'var(--shadow-elegant)',
+        'brutal': 'var(--shadow-brutal)',
+        'brutal-lg': 'var(--shadow-brutal-lg)',
+        'brutal-xl': 'var(--shadow-brutal-xl)',
+        'glitch': 'var(--shadow-glitch)',
       },
       borderRadius: {
         lg: "var(--radius)",

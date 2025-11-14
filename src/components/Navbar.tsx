@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Terminal, Zap } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -17,98 +17,116 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: "Features", href: "#features" },
-    { name: "Solutions", href: "#solutions" },
-    { name: "Security", href: "#security" },
-    { name: "Pricing", href: "#pricing" },
-    { name: "Docs", href: "#docs" },
+    { name: "FEATURES", href: "#features" },
+    { name: "SOLUTIONS", href: "#solutions" },
+    { name: "SECURITY", href: "#security" },
+    { name: "PRICING", href: "#pricing" },
+    { name: "DOCS", href: "#docs" },
   ];
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-xl border-b border-border/50 shadow-lg"
-          : "bg-transparent"
+          ? "bg-background border-b-4 border-foreground"
+          : "bg-background/90 border-b-4 border-foreground/50"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
+          {/* BRUTAL LOGO */}
           <a
             href="/"
-            className="group cursor-pointer"
+            className="group cursor-pointer relative"
           >
-            <span className="text-xl sm:text-2xl md:text-2xl font-bold bg-gradient-text bg-clip-text text-transparent group-hover:scale-105 inline-block transition-transform duration-300 tracking-tight">
-              BGAI
-            </span>
+            <div className="brutal-border bg-primary px-6 py-2 rotate-brutal-2 group-hover:rotate-brutal-4 group-hover:scale-110 transition-all duration-200">
+              <div className="flex items-center gap-2">
+                <Terminal className="w-5 h-5 text-foreground animate-glitch" />
+                <span className="text-brutal text-xl text-foreground tracking-wider">
+                  BGAI
+                </span>
+                <Zap className="w-4 h-4 text-foreground animate-pulse-brutal" />
+              </div>
+            </div>
+            {/* Decorative pixels */}
+            <div className="absolute -top-1 -right-1 w-3 h-3 bg-destructive border-2 border-foreground animate-pixel-drift" />
           </a>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-4 lg:gap-8">
-            {navLinks.map((link) => (
+          {/* DESKTOP NAVIGATION - BRUTAL STYLE */}
+          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+            {navLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-sm lg:text-base text-foreground/80 hover:text-primary font-medium transition-colors relative group"
+                className={`brutal-border bg-card hover:bg-primary px-4 py-2 text-retro text-xs lg:text-sm text-foreground hover:text-foreground font-bold transition-all duration-200 hover:scale-110 hover:rotate-brutal-2 ${
+                  index % 2 === 0 ? 'rotate-brutal-1' : '-rotate-brutal-1'
+                }`}
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </div>
 
-          {/* Desktop CTA */}
-          <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          {/* DESKTOP CTA - BRUTAL */}
+          <div className="hidden md:flex items-center gap-3">
             <Button
               onClick={() => navigate('/chat')}
-              variant="hero"
-              className="shadow-glow text-sm lg:text-base px-4 lg:px-6 h-9 lg:h-10 hover:scale-105 transition-all duration-300"
+              className="brutal-border-thick bg-accent hover:bg-accent/80 text-foreground text-brutal text-sm lg:text-base px-6 py-5 rotate-brutal-2 hover:rotate-brutal-3 hover:scale-110 transition-all duration-200 relative group"
             >
-              Get Started
+              <div className="absolute -top-2 -right-2 w-4 h-4 bg-primary border-2 border-foreground animate-bounce-brutal" />
+              <Terminal className="mr-2 w-5 h-5 animate-glitch" />
+              GET_STARTED
+              <Zap className="ml-2 w-5 h-5 group-hover:animate-rotate-chaos" />
             </Button>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* MOBILE MENU BUTTON - BRUTAL */}
           <div className="md:hidden flex items-center gap-2">
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="p-2 rounded-lg hover:bg-card/50 transition-colors"
+              className="brutal-border bg-primary hover:bg-secondary p-3 hover:rotate-brutal-3 hover:scale-110 transition-all duration-200"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6 text-foreground animate-glitch" strokeWidth={3} />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6 text-foreground animate-pulse-brutal" strokeWidth={3} />
               )}
             </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* MOBILE MENU - CHAOTIC BRUTALIST */}
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-xl border-b border-border/50 shadow-2xl">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b-4 border-foreground pixel-grid noise-texture">
           <div className="container mx-auto px-4 py-6 space-y-4">
-            {navLinks.map((link) => (
+            {navLinks.map((link, index) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="block py-3 px-4 rounded-lg hover:bg-card/50 text-foreground font-medium transition-colors"
+                className={`block brutal-border bg-card hover:bg-primary p-4 text-retro text-base text-foreground font-bold transition-all duration-200 hover:scale-105 ${
+                  index % 2 === 0 ? 'rotate-brutal-1' : '-rotate-brutal-1'
+                } hover:rotate-brutal-2`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                {link.name}
+                <div className="flex items-center justify-between">
+                  <span>{link.name}</span>
+                  <div className="w-2 h-2 bg-primary border-2 border-foreground animate-pixel-drift" />
+                </div>
               </a>
             ))}
-            <div className="flex flex-col gap-3 pt-4">
+            <div className="flex flex-col gap-4 pt-4">
               <Button
                 onClick={() => {
                   navigate('/chat');
                   setIsMobileMenuOpen(false);
                 }}
-                variant="hero"
-                className="w-full shadow-glow h-12 text-base font-semibold"
+                className="brutal-border-thick bg-accent hover:bg-accent/80 text-foreground text-brutal text-lg px-8 py-6 rotate-brutal-2 hover:rotate-brutal-4 hover:scale-105 transition-all duration-200 relative"
               >
-                Get Started
+                <div className="absolute -top-2 -right-2 w-4 h-4 bg-destructive border-2 border-foreground animate-glitch" />
+                <Terminal className="mr-2 w-6 h-6" />
+                GET_STARTED
+                <Zap className="ml-2 w-6 h-6" />
               </Button>
             </div>
           </div>
