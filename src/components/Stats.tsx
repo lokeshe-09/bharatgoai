@@ -134,19 +134,19 @@ const StatCard = ({ stat, index }: { stat: typeof stats[0]; index: number }) => 
 
         {/* Animated Number */}
         <div className="relative mb-3">
-          <div className="text-5xl sm:text-6xl font-black text-foreground tracking-tight">
+          <div className="text-5xl sm:text-6xl font-bold text-foreground tracking-tight">
             {formatNumber(count)}
             <span className="text-primary ml-1">{stat.suffix}</span>
           </div>
         </div>
 
         {/* Label */}
-        <h3 className="text-xl sm:text-2xl font-bold text-foreground/95 mb-2">
+        <h3 className="text-xl sm:text-2xl font-semibold text-foreground/95 mb-2 tracking-tight">
           {stat.label}
         </h3>
 
         {/* Description */}
-        <p className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed">
+        <p className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed font-normal">
           {stat.description}
         </p>
 
@@ -181,14 +181,14 @@ const Stats = () => {
             <span className="text-sm font-semibold text-foreground/90">Performance That Speaks</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight heading-minimal">
             <span className="block text-foreground/95 mb-2">Built for scale,</span>
             <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               proven in production
             </span>
           </h2>
 
-          <p className="text-lg text-muted-foreground/80 leading-relaxed">
+          <p className="text-lg text-muted-foreground/80 leading-relaxed font-normal text-airy">
             These aren't vanity metrics—they're real numbers from real usage.
           </p>
         </div>

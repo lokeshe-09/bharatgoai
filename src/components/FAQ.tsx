@@ -61,14 +61,14 @@ const FAQ = () => {
             <span className="text-sm font-semibold text-foreground/90">FAQ</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight heading-minimal">
             <span className="block text-foreground/95 mb-2">Questions?</span>
             <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               We've got answers
             </span>
           </h2>
 
-          <p className="text-lg text-muted-foreground/80 leading-relaxed">
+          <p className="text-lg text-muted-foreground/80 text-airy font-normal">
             Real questions from real people. If yours isn't here, just ask us.
           </p>
         </div>
@@ -91,7 +91,7 @@ const FAQ = () => {
                   onClick={() => toggleFAQ(index)}
                   className="w-full px-8 py-6 flex items-center justify-between gap-4 text-left group/btn"
                 >
-                  <span className={`text-base sm:text-lg font-semibold transition-colors ${
+                  <span className={`text-base sm:text-lg font-medium transition-colors tracking-tight ${
                     openIndex === index ? 'text-foreground' : 'text-foreground/90'
                   }`}>
                     {faq.question}
@@ -110,7 +110,7 @@ const FAQ = () => {
                     : 'max-h-0 opacity-0'
                 }`}>
                   <div className="px-8 pb-6 pt-2">
-                    <p className="text-base text-muted-foreground/90 leading-relaxed">
+                    <p className="text-base text-muted-foreground/90 leading-relaxed font-normal">
                       {faq.answer}
                     </p>
                   </div>

@@ -118,30 +118,29 @@ const Hero = () => {
               <div className="inline-block animate-fade-in-up">
                 <div className="relative group">
                   <div className="absolute -inset-2 bg-gradient-to-r from-[#2C5F2D] via-[#4A6E8A] to-[#6B4654] opacity-20 blur-xl group-hover:opacity-40 transition-all duration-700"></div>
-                  <div className="relative px-6 py-2.5 bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white transform -rotate-1 group-hover:rotate-0 transition-transform duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)]">
-                    <span className="text-sm font-black uppercase tracking-[0.15em] text-[#2C5F2D] dark:text-[#4A6E8A]">
+                  <div className="relative px-6 py-2.5 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.8)]">
+                    <span className="text-sm font-bold uppercase tracking-[0.12em] text-[#2C5F2D] dark:text-[#4A6E8A]">
                       भारत का #1 AI
                     </span>
                   </div>
                 </div>
               </div>
 
-              {/* ULTRA BOLD HEADLINE - WORLD-CLASS TYPOGRAPHY */}
+              {/* REFINED MINIMAL HEADLINE - PREMIUM TYPOGRAPHY */}
               <div className="space-y-5 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-[0.88] tracking-[-0.02em]">
-                  <span className="block text-slate-900 dark:text-white mb-3">
+                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-[-0.04em]">
+                  <span className="block text-slate-900 dark:text-white mb-3 heading-refined">
                     Intelligence
                   </span>
                   <span
-                    className="block text-[#6B4654] dark:text-[#A0674A] transform -rotate-1 inline-block relative"
+                    className="block text-[#6B4654] dark:text-[#A0674A] transform -rotate-1 inline-block relative font-semibold"
                     style={{
-                      textShadow: '5px 5px 0px rgba(0,0,0,0.08)',
-                      WebkitTextStroke: '0.5px rgba(0,0,0,0.1)'
+                      textShadow: '3px 3px 0px rgba(0,0,0,0.05)',
                     }}
                   >
                     Reimagined
                   </span>
-                  <span className="block text-[#2C5F2D] dark:text-[#4A6E8A] mt-3 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold">
+                  <span className="block text-[#2C5F2D] dark:text-[#4A6E8A] mt-3 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium heading-minimal">
                     for Bharat.
                   </span>
                 </h1>
@@ -149,59 +148,59 @@ const Hero = () => {
 
               {/* Premium Subheadline with Editorial Accent */}
               <div className="relative max-w-2xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <div className="absolute -left-5 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#A0674A] via-[#6B4654] to-transparent"></div>
-                <p className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 leading-relaxed pl-6 font-medium">
+                <div className="absolute -left-5 top-0 bottom-0 w-1 bg-gradient-to-b from-[#A0674A] via-[#6B4654] to-transparent opacity-60"></div>
+                <p className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 text-airy pl-6 font-normal">
                   Break free from cookie-cutter AI. We built something different—
-                  <span className="text-[#2C5F2D] dark:text-[#4A6E8A] font-bold"> raw intelligence</span> that speaks your language,
+                  <span className="text-[#2C5F2D] dark:text-[#4A6E8A] font-semibold"> raw intelligence</span> that speaks your language,
                   understands your context, and delivers results that matter.
                 </p>
               </div>
 
-              {/* Ultra-Premium CTA Buttons */}
+              {/* Refined Minimal CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <Button
                   onClick={() => navigate('/chat')}
-                  className="group relative h-14 sm:h-16 px-8 sm:px-10 text-lg sm:text-xl bg-[#2C5F2D] hover:bg-[#1E4D2B] text-white font-black border-[3px] sm:border-4 border-slate-900 dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 w-full sm:w-auto"
+                  className="group relative h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg bg-[#2C5F2D] hover:bg-[#1E4D2B] text-white font-semibold border-[2px] border-slate-900 dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[1.5px_1.5px_0px_0px_rgba(255,255,255,0.9)] hover:translate-x-[1.5px] hover:translate-y-[1.5px] transition-all duration-200 w-full sm:w-auto tracking-tight"
                 >
                   <span>Try It Free</span>
-                  <ArrowRight className="ml-2 w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="h-14 sm:h-16 px-8 sm:px-10 text-lg sm:text-xl bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-black border-[3px] sm:border-4 border-slate-900 dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 w-full sm:w-auto"
+                  className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold border-[2px] border-slate-900 dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[1.5px_1.5px_0px_0px_rgba(255,255,255,0.9)] hover:translate-x-[1.5px] hover:translate-y-[1.5px] transition-all duration-200 w-full sm:w-auto tracking-tight"
                 >
-                  <Play className="mr-2 w-5 h-5 sm:w-6 sm:h-6" />
+                  <Play className="mr-2 w-5 h-5" />
                   Watch Demo
                 </Button>
               </div>
 
-              {/* Real-time Premium Stats Cards */}
+              {/* Refined Minimal Stats Cards */}
               <div className="grid grid-cols-3 gap-3 sm:gap-5 pt-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#6B4654] to-[#A0674A] opacity-0 blur-lg group-hover:opacity-30 transition-all duration-500"></div>
-                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[3px] sm:border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)]">
-                    <div className="absolute top-2 right-2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#4A6E8A] rounded-full animate-pulse shadow-lg shadow-[#4A6E8A]/50"></div>
-                    <div className="text-3xl sm:text-4xl font-black text-[#6B4654] dark:text-[#A0674A] mb-1">{(activeUsers/1000).toFixed(1)}K+</div>
-                    <div className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-600 dark:text-slate-400">Live Users</div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#6B4654] to-[#A0674A] opacity-0 blur-lg group-hover:opacity-20 transition-all duration-500"></div>
+                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
+                    <div className="absolute top-2 right-2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#4A6E8A] rounded-full animate-pulse shadow-lg shadow-[#4A6E8A]/50"></div>
+                    <div className="text-3xl sm:text-4xl font-bold text-[#6B4654] dark:text-[#A0674A] mb-1 tracking-tight">{(activeUsers/1000).toFixed(1)}K+</div>
+                    <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Live Users</div>
                   </div>
                 </div>
 
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#2C5F2D] to-[#4A6E8A] opacity-0 blur-lg group-hover:opacity-30 transition-all duration-500"></div>
-                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[3px] sm:border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)]">
-                    <div className="absolute top-2 right-2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#A0674A] rounded-full animate-pulse shadow-lg shadow-[#A0674A]/50"></div>
-                    <div className="text-3xl sm:text-4xl font-black text-[#2C5F2D] dark:text-[#4A6E8A] mb-1">{(queries/1000).toFixed(0)}K+</div>
-                    <div className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-600 dark:text-slate-400">Queries</div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#2C5F2D] to-[#4A6E8A] opacity-0 blur-lg group-hover:opacity-20 transition-all duration-500"></div>
+                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
+                    <div className="absolute top-2 right-2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#A0674A] rounded-full animate-pulse shadow-lg shadow-[#A0674A]/50"></div>
+                    <div className="text-3xl sm:text-4xl font-bold text-[#2C5F2D] dark:text-[#4A6E8A] mb-1 tracking-tight">{(queries/1000).toFixed(0)}K+</div>
+                    <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Queries</div>
                   </div>
                 </div>
 
                 <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#4A6E8A] to-[#2C5F2D] opacity-0 blur-lg group-hover:opacity-30 transition-all duration-500"></div>
-                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[3px] sm:border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)]">
-                    <div className="absolute top-2 right-2 w-2.5 h-2.5 sm:w-3 sm:h-3 bg-[#2C5F2D] rounded-full shadow-lg shadow-[#2C5F2D]/50"></div>
-                    <div className="text-3xl sm:text-4xl font-black text-[#2C5F2D] mb-1">99.9%</div>
-                    <div className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-slate-600 dark:text-slate-400">Uptime</div>
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#4A6E8A] to-[#2C5F2D] opacity-0 blur-lg group-hover:opacity-20 transition-all duration-500"></div>
+                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
+                    <div className="absolute top-2 right-2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#2C5F2D] rounded-full shadow-lg shadow-[#2C5F2D]/50"></div>
+                    <div className="text-3xl sm:text-4xl font-bold text-[#2C5F2D] mb-1 tracking-tight">99.9%</div>
+                    <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Uptime</div>
                   </div>
                 </div>
               </div>
@@ -211,20 +210,20 @@ const Hero = () => {
             {/* Right Content - 5 columns */}
             <div className="lg:col-span-5 space-y-6 lg:space-y-8">
 
-              {/* Ultra-Premium Feature Cards - Stacked Editorial Style */}
+              {/* Refined Minimal Feature Cards - Stacked Editorial Style */}
               <div className="space-y-5 sm:space-y-7 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
 
                 {/* Card 1 - Lightning Fast */}
                 <div className="group relative">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-[#6B4654] to-[#8B6F47] opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700"></div>
-                  <div className="relative bg-gradient-to-br from-[#6B4654] to-[#8B6F47] p-6 sm:p-7 border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+                  <div className="absolute -inset-2 bg-gradient-to-br from-[#6B4654] to-[#8B6F47] opacity-15 blur-2xl group-hover:opacity-30 transition-all duration-700"></div>
+                  <div className="relative bg-gradient-to-br from-[#6B4654] to-[#8B6F47] p-6 sm:p-7 border-[2px] border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.9)]">
                     <div className="flex items-start gap-4 sm:gap-5">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]">
-                        <Zap className="w-7 h-7 sm:w-8 sm:h-8 text-[#6B4654]" strokeWidth={2.5} />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
+                        <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-[#6B4654]" strokeWidth={2} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-3">Lightning Fast</h3>
-                        <p className="text-sm sm:text-base text-white/95 font-semibold leading-relaxed">Sub-second responses. No waiting. No buffering. Just pure speed.</p>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Lightning Fast</h3>
+                        <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">Sub-second responses. No waiting. No buffering. Just pure speed.</p>
                       </div>
                     </div>
                   </div>
@@ -232,15 +231,15 @@ const Hero = () => {
 
                 {/* Card 2 - Enterprise Security */}
                 <div className="group relative ml-6 sm:ml-10">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700"></div>
-                  <div className="relative bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] p-6 sm:p-7 border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-300 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+                  <div className="absolute -inset-2 bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] opacity-15 blur-2xl group-hover:opacity-30 transition-all duration-700"></div>
+                  <div className="relative bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] p-6 sm:p-7 border-[2px] border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.9)]">
                     <div className="flex items-start gap-4 sm:gap-5">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:-rotate-12 transition-transform duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]">
-                        <Shield className="w-7 h-7 sm:w-8 sm:h-8 text-[#2C5F2D]" strokeWidth={2.5} />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:-rotate-12 transition-transform duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
+                        <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-[#2C5F2D]" strokeWidth={2} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-3">Fort Knox Security</h3>
-                        <p className="text-sm sm:text-base text-white/95 font-semibold leading-relaxed">Military-grade encryption. Your data stays yours. Period.</p>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Fort Knox Security</h3>
+                        <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">Military-grade encryption. Your data stays yours. Period.</p>
                       </div>
                     </div>
                   </div>
@@ -248,15 +247,15 @@ const Hero = () => {
 
                 {/* Card 3 - Built for India */}
                 <div className="group relative">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] opacity-20 blur-2xl group-hover:opacity-40 transition-all duration-700"></div>
-                  <div className="relative bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] p-6 sm:p-7 border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[5px_5px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[5px_5px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)]">
+                  <div className="absolute -inset-2 bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] opacity-15 blur-2xl group-hover:opacity-30 transition-all duration-700"></div>
+                  <div className="relative bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] p-6 sm:p-7 border-[2px] border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.9)]">
                     <div className="flex items-start gap-4 sm:gap-5">
-                      <div className="w-14 h-14 sm:w-16 sm:h-16 bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-300 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.3)]">
-                        <Cpu className="w-7 h-7 sm:w-8 sm:h-8 text-[#2C5F2D]" strokeWidth={2.5} />
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
+                        <Cpu className="w-6 h-6 sm:w-7 sm:h-7 text-[#2C5F2D]" strokeWidth={2} />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl sm:text-2xl font-black text-white mb-2 sm:mb-3">Built for India</h3>
-                        <p className="text-sm sm:text-base text-white/95 font-semibold leading-relaxed">Understands Hindi, Tamil, Bengali, and 20+ Indian languages natively.</p>
+                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Built for India</h3>
+                        <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">Understands Hindi, Tamil, Bengali, and 20+ Indian languages natively.</p>
                       </div>
                     </div>
                   </div>
@@ -264,27 +263,27 @@ const Hero = () => {
 
               </div>
 
-              {/* Premium Badge - Exclusive Design */}
+              {/* Refined Badge - Minimal Design */}
               <div className="relative group animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#6B4654] via-[#2C5F2D] to-[#4A6E8A] opacity-30 blur-lg group-hover:opacity-50 transition-all duration-500"></div>
-                <div className="relative bg-white dark:bg-slate-900 border-4 border-slate-900 dark:border-white p-6 space-y-3 transform group-hover:-rotate-1 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] group-hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] dark:group-hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">
+                <div className="absolute -inset-1 bg-gradient-to-r from-[#6B4654] via-[#2C5F2D] to-[#4A6E8A] opacity-20 blur-lg group-hover:opacity-35 transition-all duration-500"></div>
+                <div className="relative bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white p-6 space-y-3 transform group-hover:-rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:group-hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] border-2 border-slate-900 dark:border-white flex items-center justify-center shadow-lg">
-                      <Sparkle className="w-4 h-4 text-white" strokeWidth={2.5} />
+                    <div className="w-6 h-6 bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] border-[1.5px] border-slate-900 dark:border-white flex items-center justify-center shadow-md">
+                      <Sparkle className="w-3.5 h-3.5 text-white" strokeWidth={2} />
                     </div>
-                    <span className="text-sm font-black text-slate-700 dark:text-slate-300">Made in India 🇮🇳</span>
+                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Made in India 🇮🇳</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-gradient-to-br from-[#6B4654] to-[#A0674A] border-2 border-slate-900 dark:border-white flex items-center justify-center shadow-lg">
-                      <Sparkle className="w-4 h-4 text-white" strokeWidth={2.5} />
+                    <div className="w-6 h-6 bg-gradient-to-br from-[#6B4654] to-[#A0674A] border-[1.5px] border-slate-900 dark:border-white flex items-center justify-center shadow-md">
+                      <Sparkle className="w-3.5 h-3.5 text-white" strokeWidth={2} />
                     </div>
-                    <span className="text-sm font-black text-slate-700 dark:text-slate-300">Enterprise Grade</span>
+                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Enterprise Grade</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <div className="w-7 h-7 bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] border-2 border-slate-900 dark:border-white flex items-center justify-center shadow-lg">
-                      <Award className="w-4 h-4 text-white" strokeWidth={2.5} />
+                    <div className="w-6 h-6 bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] border-[1.5px] border-slate-900 dark:border-white flex items-center justify-center shadow-md">
+                      <Award className="w-3.5 h-3.5 text-white" strokeWidth={2} />
                     </div>
-                    <span className="text-sm font-black text-slate-700 dark:text-slate-300">Premium Quality</span>
+                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Premium Quality</span>
                   </div>
                 </div>
               </div>

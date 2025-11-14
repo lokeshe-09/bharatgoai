@@ -96,14 +96,14 @@ const Pricing = () => {
             <span className="text-sm font-semibold text-foreground/90">Simple, transparent pricing</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight heading-minimal">
             <span className="block text-foreground/95 mb-2">Choose the plan</span>
             <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               that fits your needs
             </span>
           </h2>
 
-          <p className="text-lg text-muted-foreground/80 leading-relaxed">
+          <p className="text-lg text-muted-foreground/80 text-airy font-normal">
             Start free, scale as you grow. No hidden fees, no surprises.
           </p>
         </div>
@@ -123,7 +123,7 @@ const Pricing = () => {
                 {/* Popular Badge */}
                 {plan.popular && (
                   <div className="absolute -top-4 left-0 right-0 flex justify-center z-20">
-                    <div className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-bold shadow-lg">
+                    <div className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold shadow-lg">
                       Most Popular
                     </div>
                   </div>
@@ -153,27 +153,27 @@ const Pricing = () => {
                   </div>
 
                   {/* Plan Name */}
-                  <h3 className="text-2xl font-bold text-foreground mb-2">
+                  <h3 className="text-2xl font-semibold text-foreground mb-2 tracking-tight">
                     {plan.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground/70 mb-6">
+                  <p className="text-sm text-muted-foreground/70 mb-6 font-normal">
                     {plan.tagline}
                   </p>
 
                   {/* Price */}
                   <div className="mb-6">
                     <div className="flex items-baseline gap-2">
-                      <span className="text-5xl font-black text-foreground">
+                      <span className="text-5xl font-bold text-foreground tracking-tight">
                         {plan.price}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground/70 mt-1">
+                    <p className="text-sm text-muted-foreground/70 mt-1 font-normal">
                       {plan.period}
                     </p>
                   </div>
 
                   {/* Description */}
-                  <p className="text-sm text-muted-foreground/80 mb-8 leading-relaxed">
+                  <p className="text-sm text-muted-foreground/80 mb-8 leading-relaxed font-normal">
                     {plan.description}
                   </p>
 
@@ -201,7 +201,7 @@ const Pricing = () => {
                             plan.popular ? 'text-primary' : 'text-foreground/70'
                           }`} strokeWidth={3} />
                         </div>
-                        <span className="text-sm text-foreground/80 leading-relaxed">
+                        <span className="text-sm text-foreground/80 leading-relaxed font-normal">
                           {feature}
                         </span>
                       </div>
