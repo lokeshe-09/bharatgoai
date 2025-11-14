@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Zap, Shield, Cpu, Sparkle, Award } from "lucide-react";
+import { ArrowRight, Play, Zap, Shield, Cpu, Terminal, Radio, Asterisk } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 
@@ -7,9 +7,9 @@ const Hero = () => {
   const navigate = useNavigate();
   const [activeUsers, setActiveUsers] = useState(8234);
   const [queries, setQueries] = useState(1247893);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [glitchText, setGlitchText] = useState("INTELLIGENCE");
 
-  // Realistic counter animation
+  // Counter animation
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveUsers(prev => prev + Math.floor(Math.random() * 3));
@@ -18,273 +18,264 @@ const Hero = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // Sophisticated mouse parallax effect
+  // Glitch text effect
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 25,
-        y: (e.clientY / window.innerHeight) * 25
-      });
-    };
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const words = ["INTELLIGENCE", "POWER", "REVOLUTION", "FUTURE", "CHAOS"];
+    const interval = setInterval(() => {
+      setGlitchText(words[Math.floor(Math.random() * words.length)]);
+    }, 4000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#FFFBF5] dark:bg-slate-950 pt-20">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background pt-20 pixel-grid scanlines">
 
-      {/* ULTRA PREMIUM BACKGROUND - HAND-CRAFTED AESTHETICS */}
+      {/* CHAOTIC BACKGROUND - BRUTALIST RETRO-FUTURISTIC */}
       <div className="absolute inset-0 z-0">
 
-        {/* Luxury gradient mesh - Top Left */}
+        {/* Rotating geometric shapes */}
         <div
-          className="absolute -top-20 -left-20 w-[700px] h-[700px] opacity-70 dark:opacity-50"
+          className="absolute top-20 left-[10%] w-64 h-64 brutal-border bg-primary/20 animate-rotate-chaos"
+          style={{ clipPath: 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)' }}
+        />
+
+        <div
+          className="absolute top-40 right-[15%] w-48 h-48 brutal-border bg-secondary/30 animate-float-chaotic"
+          style={{ clipPath: 'polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%)' }}
+        />
+
+        <div
+          className="absolute bottom-32 left-[20%] w-56 h-56 brutal-border-thick bg-accent/25 animate-bounce-brutal"
+        />
+
+        {/* Diagonal stripes */}
+        <div
+          className="absolute top-0 left-0 w-full h-full opacity-10"
           style={{
-            background: 'radial-gradient(circle at 30% 30%, #6B4654 0%, #8B6F47 35%, transparent 70%)',
-            transform: `translate(${-mousePosition.x * 0.8}px, ${-mousePosition.y * 0.8}px)`,
-            transition: 'transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1)',
-            filter: 'blur(60px)'
+            backgroundImage: 'repeating-linear-gradient(45deg, hsl(var(--foreground)), hsl(var(--foreground)) 20px, transparent 20px, transparent 40px)',
           }}
         />
 
-        {/* Organic shape - Top Right */}
-        <div
-          className="absolute -top-10 -right-10 w-[600px] h-[600px] opacity-25 dark:opacity-15"
-          style={{
-            background: 'radial-gradient(ellipse at 70% 30%, #2C5F2D 0%, #4A6E8A 50%, transparent 80%)',
-            clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%)',
-            transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px) rotate(${mousePosition.x * 0.05}deg)`,
-            transition: 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)'
-          }}
-        />
-
-        {/* Premium geometric pattern - Bottom Left */}
-        <div
-          className="absolute -bottom-20 -left-20 w-[550px] h-[550px] opacity-20 dark:opacity-12"
-          style={{
-            background: `
-              repeating-conic-gradient(from 15deg at 50% 50%,
-                #4A6E8A 0deg 25deg,
-                transparent 25deg 50deg,
-                #2C5F2D 50deg 75deg,
-                transparent 75deg 100deg
-              )
-            `,
-            transform: `rotate(${mousePosition.x * 0.1}deg)`,
-            transition: 'transform 0.8s ease-out',
-            mixBlendMode: 'multiply',
-            filter: 'blur(40px)'
-          }}
-        />
-
-        {/* Floating orb - Bottom Right */}
-        <div
-          className="absolute bottom-20 right-[15%] w-72 h-72 opacity-40 dark:opacity-25"
-          style={{
-            background: 'radial-gradient(circle, #A0674A 0%, transparent 70%)',
-            borderRadius: '43% 57% 52% 48% / 48% 55% 45% 52%',
-            transform: `translate(${mousePosition.x * 0.3}px, ${mousePosition.y * 0.3}px)`,
-            transition: 'transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1)',
-            filter: 'blur(80px)',
-            animation: 'morphing 12s ease-in-out infinite'
-          }}
-        />
-
-        {/* Luxury texture overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.04] dark:opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.8'%3E%3Cpath d='M50 50c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10s-10-4.477-10-10 4.477-10 10-10zM10 10c0-5.523 4.477-10 10-10s10 4.477 10 10-4.477 10-10 10c0 5.523-4.477 10-10 10S0 25.523 0 20s4.477-10 10-10zm10 8c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8zm40 40c4.418 0 8-3.582 8-8s-3.582-8-8-8-8 3.582-8 8 3.582 8 8 8z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '40px 40px'
-          }}
-        />
-
-        {/* Premium gradient vignette */}
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#FFFBF5] dark:to-slate-950 opacity-80"></div>
+        {/* Floating text background */}
+        <div className="absolute inset-0 overflow-hidden opacity-5">
+          <div className="text-brutal text-[200px] absolute top-10 -left-20 text-foreground animate-slide-diagonal">
+            ERROR_404
+          </div>
+          <div className="text-brutal text-[150px] absolute bottom-20 -right-10 text-foreground rotate-brutal-4">
+            DIGITAL
+          </div>
+        </div>
 
       </div>
 
-      {/* MAIN CONTENT - LUXURY EDITORIAL LAYOUT */}
+      {/* MAIN CONTENT - CHAOTIC BRUTALIST LAYOUT */}
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
         <div className="max-w-7xl mx-auto">
 
-          {/* Premium Asymmetric Grid */}
+          {/* Experimental Asymmetric Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-            {/* Left Content - 7 columns */}
-            <div className="lg:col-span-7 space-y-8 sm:space-y-10">
+            {/* Left Content - 8 columns */}
+            <div className="lg:col-span-8 space-y-8 sm:space-y-10">
 
-              {/* Exclusive Premium Badge */}
-              <div className="inline-block animate-fade-in-up">
-                <div className="relative group">
-                  <div className="absolute -inset-2 bg-gradient-to-r from-[#2C5F2D] via-[#4A6E8A] to-[#6B4654] opacity-20 blur-xl group-hover:opacity-40 transition-all duration-700"></div>
-                  <div className="relative px-6 py-2.5 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white transform -rotate-1 group-hover:rotate-0 transition-transform duration-500 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.8)]">
-                    <span className="text-sm font-bold uppercase tracking-[0.12em] text-[#2C5F2D] dark:text-[#4A6E8A]">
-                      भारत का #1 AI
-                    </span>
-                  </div>
+              {/* BRUTAL BADGE */}
+              <div className="inline-block">
+                <div className="relative brutal-border bg-primary px-6 py-3 rotate-brutal-2 animate-pulse-brutal">
+                  <span className="text-brutal text-sm text-foreground">
+                    /// भारत_का_#1_AI ///
+                  </span>
+                  <div className="absolute -top-2 -right-2 w-4 h-4 bg-destructive border-2 border-foreground animate-glitch" />
                 </div>
               </div>
 
-              {/* REFINED MINIMAL HEADLINE - PREMIUM TYPOGRAPHY */}
-              <div className="space-y-5 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
-                <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold leading-[0.95] tracking-[-0.04em]">
-                  <span className="block text-slate-900 dark:text-white mb-3 heading-refined">
-                    Intelligence
+              {/* GLITCH HEADLINE - BRUTAL TYPOGRAPHY */}
+              <div className="space-y-6">
+                <h1 className="relative">
+                  {/* Main title with glitch effect */}
+                  <span className="block text-glitch text-6xl sm:text-7xl md:text-8xl lg:text-9xl text-foreground rotate-brutal-1 animate-glitch-intense mb-4">
+                    {glitchText}
                   </span>
-                  <span
-                    className="block text-[#6B4654] dark:text-[#A0674A] transform -rotate-1 inline-block relative font-semibold"
-                    style={{
-                      textShadow: '3px 3px 0px rgba(0,0,0,0.05)',
-                    }}
-                  >
-                    Reimagined
+
+                  {/* Secondary text */}
+                  <span className="block text-brutal text-4xl sm:text-5xl md:text-6xl lg:text-7xl mb-4">
+                    <span className="bg-secondary text-foreground px-4 py-2 inline-block rotate-brutal-3 brutal-border mr-4">
+                      REIMAGINED
+                    </span>
                   </span>
-                  <span className="block text-[#2C5F2D] dark:text-[#4A6E8A] mt-3 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium heading-minimal">
-                    for Bharat.
+
+                  {/* Third line */}
+                  <span className="block text-brutal text-3xl sm:text-4xl md:text-5xl lg:text-6xl">
+                    <span className="bg-accent text-foreground px-4 py-2 inline-block rotate-brutal-2 brutal-border-thick">
+                      FOR_BHARAT.EXE
+                    </span>
                   </span>
+
+                  {/* Decorative pixel elements */}
+                  <div className="absolute -top-4 -left-4 w-8 h-8 bg-primary border-4 border-foreground animate-pixel-drift" />
+                  <div className="absolute top-1/2 -right-8 w-12 h-12 bg-quaternary border-4 border-foreground animate-rotate-chaos" />
+                  <div className="absolute -bottom-4 left-[30%] w-6 h-6 bg-destructive border-4 border-foreground animate-bounce-brutal" />
                 </h1>
               </div>
 
-              {/* Premium Subheadline with Editorial Accent */}
-              <div className="relative max-w-2xl animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                <div className="absolute -left-5 top-0 bottom-0 w-1 bg-gradient-to-b from-[#A0674A] via-[#6B4654] to-transparent opacity-60"></div>
-                <p className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 text-airy pl-6 font-normal">
-                  Break free from cookie-cutter AI. We built something different—
-                  <span className="text-[#2C5F2D] dark:text-[#4A6E8A] font-semibold"> raw intelligence</span> that speaks your language,
-                  understands your context, and delivers results that matter.
-                </p>
+              {/* BRUTAL DESCRIPTION */}
+              <div className="relative max-w-2xl">
+                <div className="brutal-border bg-card p-6 rotate-brutal-1 noise-texture">
+                  <div className="absolute top-0 left-0 w-full h-2 bg-gradient-chaos" />
+                  <p className="text-retro text-lg sm:text-xl text-foreground leading-relaxed">
+                    <span className="bg-primary text-foreground px-2 py-1 font-black">BREAK_FREE</span> from cookie-cutter AI.
+                    We built something{" "}
+                    <span className="bg-destructive text-foreground px-2 py-1 font-black">DIFFERENT</span>—
+                    <span className="bg-quaternary text-foreground px-2 py-1 font-black rotate-brutal-1 inline-block ml-1">RAW_INTELLIGENCE</span>
+                    {" "}that delivers results that matter.
+                  </p>
+                </div>
               </div>
 
-              {/* Refined Minimal CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              {/* BRUTAL CTA BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-5 pt-4">
                 <Button
                   onClick={() => navigate('/chat')}
-                  className="group relative h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg bg-[#2C5F2D] hover:bg-[#1E4D2B] text-white font-semibold border-[2px] border-slate-900 dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[1.5px_1.5px_0px_0px_rgba(255,255,255,0.9)] hover:translate-x-[1.5px] hover:translate-y-[1.5px] transition-all duration-200 w-full sm:w-auto tracking-tight"
+                  className="group h-16 sm:h-20 px-10 sm:px-12 brutal-border-thick bg-primary hover:bg-primary/80 text-foreground text-brutal text-lg sm:text-xl rotate-brutal-1 hover:rotate-brutal-3 hover:scale-105 transition-all duration-200"
                 >
-                  <span>Try It Free</span>
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <Terminal className="mr-3 w-6 h-6 animate-glitch" />
+                  <span>TRY_IT_FREE</span>
+                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform" />
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="h-14 sm:h-16 px-8 sm:px-10 text-base sm:text-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-semibold border-[2px] border-slate-900 dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[1.5px_1.5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[1.5px_1.5px_0px_0px_rgba(255,255,255,0.9)] hover:translate-x-[1.5px] hover:translate-y-[1.5px] transition-all duration-200 w-full sm:w-auto tracking-tight"
+                  className="h-16 sm:h-20 px-10 sm:px-12 brutal-border-thick bg-background hover:bg-secondary/50 text-foreground text-brutal text-lg sm:text-xl rotate-brutal-2 hover:rotate-brutal-1 hover:scale-105 transition-all duration-200"
                 >
-                  <Play className="mr-2 w-5 h-5" />
-                  Watch Demo
+                  <Play className="mr-3 w-6 h-6" />
+                  <span>WATCH_DEMO</span>
                 </Button>
               </div>
 
-              {/* Refined Minimal Stats Cards */}
-              <div className="grid grid-cols-3 gap-3 sm:gap-5 pt-8 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#6B4654] to-[#A0674A] opacity-0 blur-lg group-hover:opacity-20 transition-all duration-500"></div>
-                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
-                    <div className="absolute top-2 right-2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#4A6E8A] rounded-full animate-pulse shadow-lg shadow-[#4A6E8A]/50"></div>
-                    <div className="text-3xl sm:text-4xl font-bold text-[#6B4654] dark:text-[#A0674A] mb-1 tracking-tight">{(activeUsers/1000).toFixed(1)}K+</div>
-                    <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Live Users</div>
+              {/* BRUTAL STATS GRID */}
+              <div className="grid grid-cols-3 gap-4 sm:gap-6 pt-8">
+                <div className="brutal-border bg-card p-5 sm:p-6 rotate-brutal-1 hover:rotate-brutal-3 hover:scale-110 transition-all duration-300 cursor-pointer relative group">
+                  <div className="absolute top-2 right-2 w-3 h-3 bg-primary animate-glitch border-2 border-foreground" />
+                  <Radio className="w-6 h-6 mb-3 text-primary animate-pulse-brutal" />
+                  <div className="text-brutal text-3xl sm:text-4xl text-primary mb-2">
+                    {(activeUsers/1000).toFixed(1)}K+
+                  </div>
+                  <div className="text-pixel text-[10px] sm:text-xs text-muted-foreground uppercase">
+                    [LIVE_USERS]
                   </div>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#2C5F2D] to-[#4A6E8A] opacity-0 blur-lg group-hover:opacity-20 transition-all duration-500"></div>
-                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
-                    <div className="absolute top-2 right-2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#A0674A] rounded-full animate-pulse shadow-lg shadow-[#A0674A]/50"></div>
-                    <div className="text-3xl sm:text-4xl font-bold text-[#2C5F2D] dark:text-[#4A6E8A] mb-1 tracking-tight">{(queries/1000).toFixed(0)}K+</div>
-                    <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Queries</div>
+                <div className="brutal-border bg-card p-5 sm:p-6 rotate-brutal-2 hover:rotate-brutal-1 hover:scale-110 transition-all duration-300 cursor-pointer relative group">
+                  <div className="absolute top-2 right-2 w-3 h-3 bg-secondary animate-bounce-brutal border-2 border-foreground" />
+                  <Asterisk className="w-6 h-6 mb-3 text-secondary animate-rotate-chaos" />
+                  <div className="text-brutal text-3xl sm:text-4xl text-secondary mb-2">
+                    {(queries/1000).toFixed(0)}K+
+                  </div>
+                  <div className="text-pixel text-[10px] sm:text-xs text-muted-foreground uppercase">
+                    [QUERIES]
                   </div>
                 </div>
 
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#4A6E8A] to-[#2C5F2D] opacity-0 blur-lg group-hover:opacity-20 transition-all duration-500"></div>
-                  <div className="relative p-4 sm:p-5 bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
-                    <div className="absolute top-2 right-2 w-2 h-2 sm:w-2.5 sm:h-2.5 bg-[#2C5F2D] rounded-full shadow-lg shadow-[#2C5F2D]/50"></div>
-                    <div className="text-3xl sm:text-4xl font-bold text-[#2C5F2D] mb-1 tracking-tight">99.9%</div>
-                    <div className="text-[10px] sm:text-xs font-semibold uppercase tracking-wide text-slate-600 dark:text-slate-400">Uptime</div>
+                <div className="brutal-border bg-card p-5 sm:p-6 rotate-brutal-3 hover:rotate-brutal-2 hover:scale-110 transition-all duration-300 cursor-pointer relative group">
+                  <div className="absolute top-2 right-2 w-3 h-3 bg-accent animate-pixel-drift border-2 border-foreground" />
+                  <Terminal className="w-6 h-6 mb-3 text-accent animate-glitch" />
+                  <div className="text-brutal text-3xl sm:text-4xl text-accent mb-2">
+                    99.9%
+                  </div>
+                  <div className="text-pixel text-[10px] sm:text-xs text-muted-foreground uppercase">
+                    [UPTIME]
                   </div>
                 </div>
               </div>
 
             </div>
 
-            {/* Right Content - 5 columns */}
-            <div className="lg:col-span-5 space-y-6 lg:space-y-8">
+            {/* Right Content - 4 columns */}
+            <div className="lg:col-span-4 space-y-6 lg:space-y-8">
 
-              {/* Refined Minimal Feature Cards - Stacked Editorial Style */}
-              <div className="space-y-5 sm:space-y-7 animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+              {/* BRUTAL FEATURE CARDS - STACKED CHAOS */}
+              <div className="space-y-6 sm:space-y-8">
 
-                {/* Card 1 - Lightning Fast */}
-                <div className="group relative">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-[#6B4654] to-[#8B6F47] opacity-15 blur-2xl group-hover:opacity-30 transition-all duration-700"></div>
-                  <div className="relative bg-gradient-to-br from-[#6B4654] to-[#8B6F47] p-6 sm:p-7 border-[2px] border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.9)]">
-                    <div className="flex items-start gap-4 sm:gap-5">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
-                        <Zap className="w-6 h-6 sm:w-7 sm:h-7 text-[#6B4654]" strokeWidth={2} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Lightning Fast</h3>
-                        <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">Sub-second responses. No waiting. No buffering. Just pure speed.</p>
-                      </div>
+                {/* Card 1 */}
+                <div className="group relative brutal-border-thick bg-gradient-chaos p-6 sm:p-7 rotate-brutal-2 hover:rotate-brutal-4 hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 brutal-border bg-background flex items-center justify-center group-hover:animate-shake-brutal">
+                      <Zap className="w-8 h-8 text-primary animate-glitch" strokeWidth={3} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-brutal text-xl sm:text-2xl text-foreground mb-2">
+                        LIGHTNING_FAST
+                      </h3>
+                      <p className="text-retro text-sm sm:text-base text-foreground/80">
+                        Sub-second responses. No waiting. Just pure SPEED.
+                      </p>
                     </div>
                   </div>
+                  <div className="absolute top-2 right-2 w-4 h-4 bg-primary border-2 border-foreground animate-pixel-drift" />
                 </div>
 
-                {/* Card 2 - Enterprise Security */}
-                <div className="group relative ml-6 sm:ml-10">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] opacity-15 blur-2xl group-hover:opacity-30 transition-all duration-700"></div>
-                  <div className="relative bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] p-6 sm:p-7 border-[2px] border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.9)]">
-                    <div className="flex items-start gap-4 sm:gap-5">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:-rotate-12 transition-transform duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
-                        <Shield className="w-6 h-6 sm:w-7 sm:h-7 text-[#2C5F2D]" strokeWidth={2} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Fort Knox Security</h3>
-                        <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">Military-grade encryption. Your data stays yours. Period.</p>
-                      </div>
+                {/* Card 2 */}
+                <div className="group relative brutal-border-thick gradient-chaos p-6 sm:p-7 rotate-brutal-3 hover:rotate-brutal-1 hover:scale-105 transition-all duration-300 cursor-pointer ml-8">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 brutal-border bg-background flex items-center justify-center group-hover:animate-bounce-brutal">
+                      <Shield className="w-8 h-8 text-secondary animate-pulse-brutal" strokeWidth={3} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-brutal text-xl sm:text-2xl text-foreground mb-2">
+                        FORT_KNOX
+                      </h3>
+                      <p className="text-retro text-sm sm:text-base text-foreground/80">
+                        Military-grade encryption. Your data stays YOURS.
+                      </p>
                     </div>
                   </div>
+                  <div className="absolute top-2 right-2 w-4 h-4 bg-secondary border-2 border-foreground animate-rotate-chaos" />
                 </div>
 
-                {/* Card 3 - Built for India */}
-                <div className="group relative">
-                  <div className="absolute -inset-2 bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] opacity-15 blur-2xl group-hover:opacity-30 transition-all duration-700"></div>
-                  <div className="relative bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] p-6 sm:p-7 border-[2px] border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-400 shadow-[3px_3px_0px_0px_rgba(0,0,0,0.9)] hover:shadow-[5px_5px_0px_0px_rgba(0,0,0,0.9)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,0.9)] dark:hover:shadow-[5px_5px_0px_0px_rgba(255,255,255,0.9)]">
-                    <div className="flex items-start gap-4 sm:gap-5">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white dark:bg-slate-900 border-[2px] border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.3)]">
-                        <Cpu className="w-6 h-6 sm:w-7 sm:h-7 text-[#2C5F2D]" strokeWidth={2} />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="text-lg sm:text-xl font-bold text-white mb-2 tracking-tight">Built for India</h3>
-                        <p className="text-sm sm:text-base text-white/90 font-normal leading-relaxed">Understands Hindi, Tamil, Bengali, and 20+ Indian languages natively.</p>
-                      </div>
+                {/* Card 3 */}
+                <div className="group relative brutal-border-thick bg-gradient-chaos p-6 sm:p-7 rotate-brutal-1 hover:rotate-brutal-5 hover:scale-105 transition-all duration-300 cursor-pointer">
+                  <div className="flex items-start gap-4">
+                    <div className="w-16 h-16 brutal-border bg-background flex items-center justify-center group-hover:animate-rotate-chaos">
+                      <Cpu className="w-8 h-8 text-accent animate-color-shift" strokeWidth={3} />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-brutal text-xl sm:text-2xl text-foreground mb-2">
+                        BUILT_FOR_INDIA
+                      </h3>
+                      <p className="text-retro text-sm sm:text-base text-foreground/80">
+                        Hindi, Tamil, Bengali, and 20+ languages NATIVELY.
+                      </p>
                     </div>
                   </div>
+                  <div className="absolute top-2 right-2 w-4 h-4 bg-accent border-2 border-foreground animate-bounce-brutal" />
                 </div>
 
               </div>
 
-              {/* Refined Badge - Minimal Design */}
-              <div className="relative group animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                <div className="absolute -inset-1 bg-gradient-to-r from-[#6B4654] via-[#2C5F2D] to-[#4A6E8A] opacity-20 blur-lg group-hover:opacity-35 transition-all duration-500"></div>
-                <div className="relative bg-white dark:bg-slate-900 border-[1.5px] border-slate-900 dark:border-white p-6 space-y-3 transform group-hover:-rotate-1 transition-all duration-400 shadow-[2px_2px_0px_0px_rgba(0,0,0,0.8)] group-hover:shadow-[4px_4px_0px_0px_rgba(0,0,0,0.8)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,0.8)] dark:group-hover:shadow-[4px_4px_0px_0px_rgba(255,255,255,0.8)]">
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] border-[1.5px] border-slate-900 dark:border-white flex items-center justify-center shadow-md">
-                      <Sparkle className="w-3.5 h-3.5 text-white" strokeWidth={2} />
-                    </div>
-                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Made in India 🇮🇳</span>
+              {/* BRUTAL BADGE CLUSTER */}
+              <div className="relative brutal-border-thick bg-card p-6 space-y-4 rotate-brutal-2 noise-texture">
+                <div className="absolute -top-3 -right-3 brutal-border bg-destructive text-foreground text-brutal text-xs px-3 py-1 rotate-brutal-5 animate-pulse-brutal">
+                  HOT
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 brutal-border bg-primary flex items-center justify-center animate-glitch">
+                    <span className="text-brutal text-xs text-foreground">🇮🇳</span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-gradient-to-br from-[#6B4654] to-[#A0674A] border-[1.5px] border-slate-900 dark:border-white flex items-center justify-center shadow-md">
-                      <Sparkle className="w-3.5 h-3.5 text-white" strokeWidth={2} />
-                    </div>
-                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Enterprise Grade</span>
+                  <span className="text-retro text-sm font-bold text-foreground">MADE_IN_INDIA</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 brutal-border bg-secondary flex items-center justify-center animate-rotate-chaos">
+                    <span className="text-brutal text-xs text-foreground">⚡</span>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-gradient-to-br from-[#4A6E8A] to-[#2C5F2D] border-[1.5px] border-slate-900 dark:border-white flex items-center justify-center shadow-md">
-                      <Award className="w-3.5 h-3.5 text-white" strokeWidth={2} />
-                    </div>
-                    <span className="text-sm font-semibold text-slate-700 dark:text-slate-300">Premium Quality</span>
+                  <span className="text-retro text-sm font-bold text-foreground">ENTERPRISE_GRADE</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 brutal-border bg-accent flex items-center justify-center animate-bounce-brutal">
+                    <span className="text-brutal text-xs text-foreground">★</span>
                   </div>
+                  <span className="text-retro text-sm font-bold text-foreground">PREMIUM_QUALITY</span>
                 </div>
               </div>
 
@@ -295,34 +286,27 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Decorative Hand-drawn Elements */}
-      <div className="absolute bottom-12 left-12 hidden xl:block opacity-60 dark:opacity-40">
-        <div className="relative w-40 h-40 transform rotate-12 animate-float-slow">
-          <div className="absolute inset-0 border-[5px] border-[#A0674A] opacity-70" style={{ borderRadius: '48% 52% 55% 45% / 52% 48% 52% 48%' }}></div>
-          <div className="absolute inset-3 border-[5px] border-[#6B4654] opacity-50" style={{ borderRadius: '52% 48% 45% 55% / 48% 52% 48% 52%' }}></div>
+      {/* CHAOTIC DECORATIVE ELEMENTS */}
+      <div className="absolute top-32 right-[5%] hidden xl:block">
+        <div className="w-32 h-32 brutal-border-xl bg-quaternary/50 animate-float-chaotic rotate-brutal-5" />
+      </div>
+
+      <div className="absolute bottom-20 left-[8%] hidden xl:block">
+        <div className="text-brutal text-9xl text-primary/10 animate-rotate-chaos">
+          &lt;/&gt;
         </div>
       </div>
 
-      {/* Bottom fade gradient */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#FFFBF5] dark:from-slate-950 to-transparent z-10"></div>
+      <div className="absolute top-1/2 right-[3%] hidden xl:block">
+        <div className="brutal-border bg-destructive/80 p-4 rotate-brutal-4 animate-pulse-brutal">
+          <span className="text-brutal text-2xl text-foreground">ERROR</span>
+        </div>
+      </div>
 
-      {/* Animation keyframes */}
-      <style>{`
-        @keyframes morphing {
-          0%, 100% {
-            border-radius: 43% 57% 52% 48% / 48% 55% 45% 52%;
-          }
-          25% {
-            border-radius: 52% 48% 59% 41% / 48% 62% 38% 52%;
-          }
-          50% {
-            border-radius: 41% 59% 48% 52% / 62% 45% 55% 38%;
-          }
-          75% {
-            border-radius: 59% 41% 52% 48% / 45% 55% 45% 55%;
-          }
-        }
-      `}</style>
+      {/* Terminal-style scanline effect */}
+      <div className="absolute inset-0 pointer-events-none z-30">
+        <div className="w-full h-1 bg-primary/30 absolute top-0 animate-scanline" />
+      </div>
 
     </section>
   );

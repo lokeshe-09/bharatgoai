@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Send, ArrowLeft, Loader2, User, Copy, Check, Moon, Sun } from 'lucide-react';
+import { Send, ArrowLeft, Loader2, User, Copy, Check, Terminal, Zap, Radio } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Message, sendMessageStream } from '@/lib/gemini';
 import { toast } from 'sonner';
@@ -18,70 +18,39 @@ const Chat = () => {
     {
       id: '1',
       role: 'assistant',
-      content: 'Namaste! 🙏 Welcome to **BharatGoAi**, your intelligent AI assistant.\n\nHow may I assist you today? 🇮🇳',
+      content: '>>> NAMASTE! 🙏\n\nWelcome to **BharatGoAi** - Your REVOLUTIONARY AI assistant.\n\nHow may I ASSIST you today? 🇮🇳',
       timestamp: new Date(),
     },
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
-  const [chatTheme, setChatTheme] = useState<'light' | 'dark'>('light');
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const navigate = useNavigate();
 
-  // Chat-specific theme control
   useEffect(() => {
-    // ============================================
-    // LOGGING: Chat Session Initialized
-    // ============================================
+    // Logging
     console.log('╔═══════════════════════════════════════════════════════════════╗');
     console.log('║              BHARATGOAI CHAT SESSION STARTED                  ║');
     console.log('╠═══════════════════════════════════════════════════════════════╣');
     console.log('│ Session Start:', new Date().toLocaleString());
     console.log('│ Platform: BharatGoAi - India\'s Advanced AI Platform');
-    console.log('│ User Agent:', navigator.userAgent);
-    console.log('│ Screen:', `${window.screen.width}x${window.screen.height}`);
-    console.log('│ Viewport:', `${window.innerWidth}x${window.innerHeight}`);
     console.log('╚═══════════════════════════════════════════════════════════════╝');
-    console.log('');
-    console.log('💡 TIP: All user inputs will be logged to the console AND terminal.');
-    console.log('📊 Monitor this console for detailed chat analytics.');
-    console.log('🖥️  Check your terminal/command prompt for user input logs.');
-    console.log('');
-
-    // Set light mode for chat interface on mount
-    document.documentElement.classList.remove('dark');
-    document.documentElement.classList.add('light');
-
-    const savedChatTheme = localStorage.getItem('chatTheme') as 'light' | 'dark' | null;
-    if (savedChatTheme) {
-      setChatTheme(savedChatTheme);
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(savedChatTheme);
-    }
   }, []);
-
-  const toggleChatTheme = () => {
-    const newTheme = chatTheme === 'light' ? 'dark' : 'light';
-    setChatTheme(newTheme);
-    document.documentElement.classList.remove('light', 'dark');
-    document.documentElement.classList.add(newTheme);
-    localStorage.setItem('chatTheme', newTheme);
-  };
 
   const copyToClipboard = (code: string, codeId: string) => {
     navigator.clipboard.writeText(code).then(() => {
       setCopiedCode(codeId);
-      toast.success('Code copied to clipboard!');
+      toast.success('CODE COPIED!');
       setTimeout(() => setCopiedCode(null), 2000);
     }).catch(() => {
-      toast.error('Failed to copy code');
+      toast.error('COPY FAILED');
     });
   };
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
   };
 
   useEffect(() => {
@@ -89,14 +58,12 @@ const Chat = () => {
   }, [messages]);
 
   useEffect(() => {
-    // Auto-resize textarea
     if (textareaRef.current) {
       textareaRef.current.style.height = 'auto';
       textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
     }
   }, [input]);
 
-  // Auto-focus input on component mount (like ChatGPT)
   useEffect(() => {
     if (textareaRef.current) {
       textareaRef.current.focus();
@@ -113,41 +80,25 @@ const Chat = () => {
       timestamp: new Date(),
     };
 
-    // ============================================
-    // LOGGING: User Input to Console
-    // ============================================
     console.log('╔═══════════════════════════════════════════════════════════════╗');
     console.log('║                    USER INPUT LOG                             ║');
     console.log('╠═══════════════════════════════════════════════════════════════╣');
     console.log('│ Timestamp:', userMessage.timestamp.toLocaleString());
-    console.log('│ Message ID:', userMessage.id);
-    console.log('│ Role:', userMessage.role);
-    console.log('├───────────────────────────────────────────────────────────────┤');
-    console.log('│ User Input:');
-    console.log('│', userMessage.content);
-    console.log('├───────────────────────────────────────────────────────────────┤');
-    console.log('│ Input Length:', userMessage.content.length, 'characters');
-    console.log('│ Word Count:', userMessage.content.split(/\s+/).length, 'words');
-    console.log('│ Session Messages:', messages.length + 1);
+    console.log('│ User Input:', userMessage.content);
     console.log('╚═══════════════════════════════════════════════════════════════╝');
 
-    // ============================================
-    // LOGGING: User Input to TERMINAL (Simple)
-    // ============================================
     logUserInput(userMessage.id, userMessage.content, messages.length + 1);
 
     setMessages(prev => [...prev, userMessage]);
     setInput('');
     setIsLoading(true);
 
-    // Auto-focus input after sending (for better UX)
     setTimeout(() => {
       if (textareaRef.current) {
         textareaRef.current.focus();
       }
     }, 100);
 
-    // Create empty assistant message for streaming
     const assistantMessageId = (Date.now() + 1).toString();
     const assistantMessage: Message = {
       id: assistantMessageId,
@@ -161,8 +112,6 @@ const Chat = () => {
     try {
       let fullResponse = '';
       const startTime = Date.now();
-
-      console.log('🤖 Sending request to AI...');
 
       await sendMessageStream(
         userMessage.content,
@@ -180,59 +129,22 @@ const Chat = () => {
       );
 
       const responseTime = Date.now() - startTime;
-
-      // ============================================
-      // LOGGING: AI Response
-      // ============================================
-      console.log('╔═══════════════════════════════════════════════════════════════╗');
-      console.log('║                   AI RESPONSE LOG                             ║');
-      console.log('╠═══════════════════════════════════════════════════════════════╣');
-      console.log('│ Timestamp:', new Date().toLocaleString());
-      console.log('│ Response ID:', assistantMessageId);
-      console.log('│ Response Time:', responseTime, 'ms');
-      console.log('├───────────────────────────────────────────────────────────────┤');
-      console.log('│ AI Response Preview:');
-      console.log('│', fullResponse.substring(0, 150) + (fullResponse.length > 150 ? '...' : ''));
-      console.log('├───────────────────────────────────────────────────────────────┤');
-      console.log('│ Response Length:', fullResponse.length, 'characters');
-      console.log('│ Response Words:', fullResponse.split(/\s+/).length, 'words');
-      console.log('│ Lines:', fullResponse.split('\n').length);
-      console.log('╚═══════════════════════════════════════════════════════════════╝');
+      console.log('AI Response Time:', responseTime, 'ms');
 
     } catch (error: any) {
-      // ============================================
-      // LOGGING: Error
-      // ============================================
-      console.log('╔═══════════════════════════════════════════════════════════════╗');
-      console.log('║                      ERROR LOG                                ║');
-      console.log('╠═══════════════════════════════════════════════════════════════╣');
-      console.log('│ Timestamp:', new Date().toLocaleString());
-      console.log('│ Error Type:', error?.name || 'Unknown');
-      console.log('│ Error Message:', error?.message || 'Unknown error');
-      console.log('├───────────────────────────────────────────────────────────────┤');
-      console.log('│ User Input that caused error:');
-      console.log('│', userMessage.content);
-      console.log('├───────────────────────────────────────────────────────────────┤');
-      console.log('│ Full Error Stack:');
-      console.error(error);
-      console.log('╚═══════════════════════════════════════════════════════════════╝');
-
-      // Show friendly error message
+      console.error('ERROR:', error);
       const friendlyMessage: Message = {
         id: assistantMessageId,
         role: 'assistant',
-        content: 'I apologize, but I\'m having trouble responding right now. 😔\n\nPlease try again in a moment. If the issue persists, feel free to refresh the page.\n\nThank you for your patience! 🙏',
+        content: '>>> ERROR_404\n\nSomething went WRONG! 😔\n\nPlease try again. System will RECOVER.\n\nThank you for your PATIENCE! 🙏',
         timestamp: new Date(),
       };
 
-      // Replace empty message with friendly error message
       setMessages(prev =>
         prev.map(msg => msg.id === assistantMessageId ? friendlyMessage : msg)
       );
     } finally {
       setIsLoading(false);
-
-      // Re-focus input after AI response completes (for better UX like ChatGPT)
       setTimeout(() => {
         if (textareaRef.current) {
           textareaRef.current.focus();
@@ -249,118 +161,114 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
-      {/* Minimal Header */}
-      <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-14 items-center justify-between">
+    <div className="min-h-screen bg-background flex flex-col pixel-grid scanlines">
+      {/* BRUTAL HEADER */}
+      <header className="sticky top-0 z-50 w-full border-b-4 border-foreground bg-background">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => navigate('/')}
-              className="hover:bg-muted rounded-lg h-8 w-8"
+              className="brutal-border bg-secondary hover:bg-secondary/80 p-2 hover:rotate-brutal-2 hover:scale-110 transition-all duration-200"
             >
-              <ArrowLeft className="h-4 w-4" />
+              <ArrowLeft className="h-5 w-5 text-foreground animate-glitch" strokeWidth={3} />
             </Button>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-[11px] font-bold text-white">BGAI</span>
-              </div>
-              <div>
-                <h1 className="text-sm font-semibold text-foreground">BharatGoAi</h1>
-                <p className="text-xs text-muted-foreground">AI Assistant</p>
+            <div className="brutal-border bg-primary px-4 py-2 rotate-brutal-1">
+              <div className="flex items-center gap-2">
+                <Terminal className="w-5 h-5 text-foreground animate-pulse-brutal" strokeWidth={3} />
+                <div>
+                  <h1 className="text-brutal text-base text-foreground">BGAI</h1>
+                </div>
+                <Radio className="w-4 h-4 text-destructive animate-glitch" />
               </div>
             </div>
           </div>
 
-          {/* Theme Toggle - Chat Only */}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={toggleChatTheme}
-            className="h-8 w-8 rounded-lg hover:bg-muted"
-            title={chatTheme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
-          >
-            {chatTheme === 'light' ? (
-              <Moon className="h-4 w-4" />
-            ) : (
-              <Sun className="h-4 w-4" />
-            )}
-          </Button>
+          {/* Status indicator */}
+          <div className="brutal-border bg-accent px-4 py-2 rotate-brutal-2">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 bg-primary border-2 border-foreground animate-pixel-drift" />
+              <span className="text-retro text-xs text-foreground font-bold">ONLINE</span>
+            </div>
+          </div>
         </div>
       </header>
 
-      {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto pb-4">
+      {/* MESSAGES AREA - BRUTAL STYLE */}
+      <div className="flex-1 overflow-y-auto pb-4 noise-texture">
         <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-5xl py-4 sm:py-6 lg:py-8">
-          <div className="space-y-4 sm:space-y-6">
+          <div className="space-y-6">
             {messages.map((message, index) => (
               <div
                 key={message.id}
-                className={`flex gap-2 animate-fade-in-up ${
+                className={`flex gap-3 ${
                   message.role === 'user' ? 'flex-row-reverse' : ''
                 }`}
-                style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {/* Minimal Avatar */}
+                {/* BRUTAL AVATAR */}
                 <div className="flex-shrink-0">
                   <div
-                    className={`w-7 h-7 rounded-lg flex items-center justify-center ${
+                    className={`w-10 h-10 brutal-border flex items-center justify-center ${
                       message.role === 'user'
-                        ? 'bg-blue-600'
-                        : 'bg-primary'
-                    }`}
+                        ? 'bg-quaternary rotate-brutal-2'
+                        : 'bg-primary rotate-brutal-1'
+                    } hover:rotate-brutal-4 hover:scale-110 transition-all duration-200`}
                   >
                     {message.role === 'user' ? (
-                      <User className="w-4 h-4 text-white" strokeWidth={2} />
+                      <User className="w-5 h-5 text-foreground animate-pulse-brutal" strokeWidth={3} />
                     ) : (
-                      <span className="text-[10px] font-bold text-white">BGAI</span>
+                      <Terminal className="w-5 h-5 text-foreground animate-glitch" strokeWidth={3} />
                     )}
                   </div>
                 </div>
 
-                {/* Minimal Message Content */}
+                {/* BRUTAL MESSAGE CONTENT */}
                 <div
                   className={`flex-1 ${
                     message.role === 'user' ? 'flex justify-end' : ''
                   }`}
                 >
                   <div
-                    className={`inline-block max-w-full sm:max-w-[80%] rounded-2xl px-4 py-2.5 ${
+                    className={`inline-block max-w-full sm:max-w-[85%] brutal-border-thick p-4 ${
                       message.role === 'user'
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-card border border-border/50'
-                    }`}
+                        ? 'bg-quaternary rotate-brutal-1'
+                        : 'bg-card rotate-brutal-2'
+                    } noise-texture relative`}
                   >
-                    <div className={`text-sm sm:text-base leading-relaxed break-words overflow-x-auto ${
-                      message.role === 'user' ? 'markdown-user' : 'markdown-assistant'
-                    }`}>
+                    {/* Decorative corner */}
+                    <div className={`absolute -top-2 -right-2 w-4 h-4 border-2 border-foreground ${
+                      message.role === 'user' ? 'bg-primary' : 'bg-secondary'
+                    } animate-pixel-drift`} />
+
+                    <div className="text-retro text-sm sm:text-base leading-relaxed break-words overflow-x-auto text-foreground">
                       {message.role === 'user' ? (
-                        <div className="whitespace-pre-wrap">{message.content}</div>
+                        <div className="whitespace-pre-wrap font-bold">{message.content}</div>
                       ) : message.content === '' ? (
-                        <div className="flex items-center gap-2 text-muted-foreground">
-                          <Loader2 className="w-4 h-4 animate-spin text-primary" />
-                          <span className="text-sm">Thinking...</span>
+                        <div className="flex items-center gap-2">
+                          <Terminal className="w-5 h-5 animate-glitch text-primary" />
+                          <span className="text-brutal">THINKING...</span>
+                          <Zap className="w-4 h-4 animate-bounce-brutal text-destructive" />
                         </div>
                       ) : (
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm, remarkMath]}
                           rehypePlugins={[rehypeKatex, rehypeHighlight]}
                           components={{
-                            h1: ({node, ...props}) => <h1 className="text-xl sm:text-2xl font-bold mt-4 mb-2" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-lg sm:text-xl font-bold mt-3 mb-2" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-base sm:text-lg font-bold mt-2 mb-1" {...props} />,
+                            h1: ({node, ...props}) => <h1 className="text-brutal text-xl sm:text-2xl mt-4 mb-2" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-brutal text-lg sm:text-xl mt-3 mb-2" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-brutal text-base sm:text-lg mt-2 mb-1" {...props} />,
                             p: ({node, ...props}) => <p className="mb-2 leading-relaxed" {...props} />,
                             ul: ({node, ...props}) => <ul className="list-disc list-inside mb-2 space-y-1" {...props} />,
                             ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-2 space-y-1" {...props} />,
                             li: ({node, ...props}) => <li className="ml-2" {...props} />,
                             code: ({node, inline, className, children, ...props}: any) => {
                               return inline ? (
-                                <code className="bg-muted/50 text-primary px-1.5 py-0.5 rounded text-xs sm:text-sm font-mono" {...props}>
+                                <code className="brutal-border bg-primary text-foreground px-2 py-1 text-xs font-bold" {...props}>
                                   {children}
                                 </code>
                               ) : (
-                                <code className={`${className} block bg-muted/30 p-2 sm:p-3 rounded-lg text-xs sm:text-sm overflow-x-auto`} {...props}>
+                                <code className={`${className} block brutal-border bg-muted p-3 text-xs overflow-x-auto font-mono`} {...props}>
                                   {children}
                                 </code>
                               );
@@ -372,47 +280,45 @@ const Chat = () => {
 
                               return (
                                 <div className="relative group mb-2">
-                                  <pre className="bg-muted/30 p-2 sm:p-3 rounded-lg overflow-x-auto pr-12" {...props}>
+                                  <pre className="brutal-border bg-muted p-3 overflow-x-auto pr-12" {...props}>
                                     {children}
                                   </pre>
                                   <button
                                     onClick={() => copyToClipboard(codeContent, codeId)}
-                                    className="absolute top-2 right-2 p-1.5 rounded-md bg-background/80 hover:bg-background border border-border/50 opacity-0 group-hover:opacity-100 transition-opacity"
-                                    title="Copy code"
+                                    className="absolute top-2 right-2 brutal-border bg-background hover:bg-primary p-2 opacity-100 hover:rotate-brutal-2 hover:scale-110 transition-all duration-200"
+                                    title="COPY CODE"
                                   >
                                     {isCopied ? (
-                                      <Check className="w-3.5 h-3.5 text-green-500" />
+                                      <Check className="w-4 h-4 text-primary animate-glitch" strokeWidth={3} />
                                     ) : (
-                                      <Copy className="w-3.5 h-3.5 text-muted-foreground" />
+                                      <Copy className="w-4 h-4 text-foreground" strokeWidth={3} />
                                     )}
                                   </button>
                                 </div>
                               );
                             },
-                            a: ({node, ...props}) => <a className="text-primary hover:underline" {...props} />,
-                            strong: ({node, ...props}) => <strong className="font-bold text-foreground" {...props} />,
-                            em: ({node, ...props}) => <em className="italic" {...props} />,
-                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary/50 pl-4 italic my-2" {...props} />,
-                            table: ({node, ...props}) => <div className="overflow-x-auto mb-2"><table className="min-w-full border-collapse" {...props} /></div>,
-                            th: ({node, ...props}) => <th className="border border-border px-2 sm:px-4 py-2 bg-muted/30 font-bold text-left" {...props} />,
-                            td: ({node, ...props}) => <td className="border border-border px-2 sm:px-4 py-2" {...props} />,
+                            a: ({node, ...props}) => <a className="text-primary hover:text-secondary underline font-bold" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-black text-foreground bg-primary px-1" {...props} />,
+                            em: ({node, ...props}) => <em className="italic font-bold" {...props} />,
+                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 my-2 italic font-bold" {...props} />,
+                            table: ({node, ...props}) => <div className="overflow-x-auto mb-2"><table className="min-w-full brutal-border" {...props} /></div>,
+                            th: ({node, ...props}) => <th className="brutal-border px-4 py-2 bg-primary font-black text-foreground" {...props} />,
+                            td: ({node, ...props}) => <td className="brutal-border px-4 py-2" {...props} />,
                           }}
                         >
                           {message.content}
                         </ReactMarkdown>
                       )}
                     </div>
-                    <div
-                      className={`text-xs mt-1.5 ${
-                        message.role === 'user'
-                          ? 'text-white/60'
-                          : 'text-muted-foreground/50'
-                      }`}
-                    >
-                      {message.timestamp.toLocaleTimeString([], {
-                        hour: '2-digit',
-                        minute: '2-digit',
-                      })}
+
+                    {/* BRUTAL TIMESTAMP */}
+                    <div className="mt-2 pt-2 border-t-2 border-foreground/20">
+                      <span className="text-pixel text-[10px] text-muted-foreground uppercase">
+                        [{message.timestamp.toLocaleTimeString([], {
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })}]
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -424,45 +330,46 @@ const Chat = () => {
         </div>
       </div>
 
-      {/* Minimal Input Area */}
-      <div className="sticky bottom-0 w-full border-t border-border/40 bg-background/95 backdrop-blur-sm">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-5xl py-3">
-          <div className="relative flex items-end gap-2">
+      {/* BRUTAL INPUT AREA */}
+      <div className="sticky bottom-0 w-full border-t-4 border-foreground bg-background">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-5xl py-4">
+          <div className="relative flex items-end gap-3">
             <div className="flex-1 relative">
               <textarea
                 ref={textareaRef}
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="Type your message here..."
+                placeholder="TYPE_YOUR_MESSAGE_HERE..."
                 rows={1}
-                className="w-full resize-none rounded-2xl bg-card border border-border/50 px-4 py-2.5 pr-11 text-sm focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/30 transition-colors max-h-32 overflow-y-auto"
+                className="w-full resize-none brutal-border-thick bg-card px-4 py-3 pr-14 text-retro text-sm font-bold focus:outline-none focus:bg-primary/20 transition-colors max-h-32 overflow-y-auto placeholder:text-muted-foreground"
                 disabled={isLoading}
               />
 
-              {/* Minimal Send Button */}
+              {/* BRUTAL SEND BUTTON */}
               <Button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
-                size="icon"
-                className="absolute right-1.5 bottom-1.5 h-8 w-8 rounded-lg bg-primary hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                className="absolute right-2 bottom-2 brutal-border bg-accent hover:bg-accent/80 p-2 disabled:opacity-50 hover:rotate-brutal-3 hover:scale-110 transition-all duration-200"
               >
                 {isLoading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <Loader2 className="w-5 h-5 animate-spin text-foreground" strokeWidth={3} />
                 ) : (
-                  <Send className="w-4 h-4" />
+                  <Send className="w-5 h-5 text-foreground" strokeWidth={3} />
                 )}
               </Button>
             </div>
           </div>
 
-          {/* Minimal Helper Text */}
-          <div className="flex flex-col items-center gap-1 mt-2">
-            <p className="text-xs text-muted-foreground/50 text-center">
-              BGAI (BharatGoAi) - India's AI Assistant | Designed for Indians, by Indians 🇮🇳
-            </p>
-            <p className="text-xs text-muted-foreground/40 text-center">
-              BharatGoAi may make mistakes. Verify important information.
+          {/* BRUTAL FOOTER TEXT */}
+          <div className="flex flex-col items-center gap-2 mt-3">
+            <div className="brutal-border bg-primary px-4 py-2 rotate-brutal-1">
+              <p className="text-brutal text-[10px] text-foreground text-center">
+                BHARATGOAI - INDIA'S AI 🇮🇳
+              </p>
+            </div>
+            <p className="text-pixel text-[10px] text-muted-foreground/60 text-center">
+              [WARNING: AI MAY MAKE MISTAKES. VERIFY DATA.]
             </p>
           </div>
         </div>
