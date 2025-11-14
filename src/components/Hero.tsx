@@ -40,7 +40,7 @@ const Hero = () => {
         <div
           className="absolute top-0 left-0 w-[600px] h-[600px] opacity-80"
           style={{
-            background: 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)',
+            background: 'linear-gradient(135deg, #6B4654 0%, #8B6F47 100%)',
             clipPath: 'polygon(0 0, 100% 0, 45% 100%, 0 85%)',
             transform: `translate(${-mousePosition.x}px, ${-mousePosition.y}px)`,
             transition: 'transform 0.3s ease-out'
@@ -51,7 +51,7 @@ const Hero = () => {
         <div
           className="absolute top-10 right-0 w-[450px] h-[350px] opacity-20 dark:opacity-10"
           style={{
-            background: '#028090',
+            background: '#2C5F2D',
             clipPath: 'polygon(30% 0, 100% 0, 100% 100%, 0 100%)',
             transform: `translate(${mousePosition.x * 0.5}px, ${mousePosition.y * 0.5}px)`,
             transition: 'transform 0.3s ease-out'
@@ -63,7 +63,7 @@ const Hero = () => {
           className="absolute bottom-20 right-[10%] w-64 h-64 opacity-30 dark:opacity-20"
           style={{
             background: 'none',
-            border: '8px solid #E07A5F',
+            border: '8px solid #A0674A',
             borderRadius: '47% 53% 44% 56% / 55% 47% 53% 45%',
             animation: 'morphing 8s ease-in-out infinite'
           }}
@@ -75,9 +75,9 @@ const Hero = () => {
           style={{
             background: `
               repeating-conic-gradient(from 0deg at 50% 50%,
-                #00A896 0deg 30deg,
+                #4A6E8A 0deg 30deg,
                 transparent 30deg 60deg,
-                #2D6A4F 60deg 90deg,
+                #2C5F2D 60deg 90deg,
                 transparent 90deg 120deg
               )
             `,
@@ -110,9 +110,9 @@ const Hero = () => {
               {/* Bold Editorial Badge */}
               <div className="inline-block">
                 <div className="relative">
-                  <div className="absolute -inset-1 bg-gradient-to-r from-[#FF6B35] to-[#F7931E] opacity-30 blur"></div>
-                  <div className="relative px-6 py-2 bg-white dark:bg-slate-900 border-4 border-[#FF6B35] transform -rotate-1">
-                    <span className="text-sm font-black uppercase tracking-wider text-[#FF6B35]">
+                  <div className="absolute -inset-1 bg-gradient-to-r from-[#2C5F2D] to-[#4A6E8A] opacity-30 blur"></div>
+                  <div className="relative px-6 py-2 bg-white dark:bg-slate-900 border-4 border-[#2C5F2D] transform -rotate-1">
+                    <span className="text-sm font-black uppercase tracking-wider text-[#2C5F2D]">
                       भारत का #1 AI
                     </span>
                   </div>
@@ -126,14 +126,14 @@ const Hero = () => {
                     Intelligence
                   </span>
                   <span
-                    className="block text-[#FF6B35] transform -rotate-1 inline-block relative"
+                    className="block text-[#6B4654] transform -rotate-1 inline-block relative"
                     style={{
                       textShadow: '4px 4px 0px rgba(0,0,0,0.1)'
                     }}
                   >
                     Reimagined
                   </span>
-                  <span className="block text-[#028090] dark:text-[#00A896] mt-2 text-4xl sm:text-5xl md:text-6xl">
+                  <span className="block text-[#2C5F2D] dark:text-[#4A6E8A] mt-2 text-4xl sm:text-5xl md:text-6xl">
                     for Bharat.
                   </span>
                 </h1>
@@ -141,10 +141,10 @@ const Hero = () => {
 
               {/* Subheadline with editorial flair */}
               <div className="relative max-w-xl">
-                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#E07A5F]"></div>
+                <div className="absolute -left-4 top-0 bottom-0 w-1 bg-[#A0674A]"></div>
                 <p className="text-base sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed pl-4 font-medium">
                   Break free from cookie-cutter AI. We built something different—
-                  <span className="text-[#028090] dark:text-[#00A896] font-bold"> raw intelligence</span> that speaks your language,
+                  <span className="text-[#2C5F2D] dark:text-[#4A6E8A] font-bold"> raw intelligence</span> that speaks your language,
                   understands your context, and delivers results that matter.
                 </p>
               </div>
@@ -153,39 +153,39 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
                 <Button
                   onClick={() => navigate('/chat')}
-                  className="group relative h-14 px-8 bg-[#FF6B35] hover:bg-[#ff5722] text-white font-bold text-lg border-4 border-slate-900 dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150"
+                  className="group relative h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg bg-[#2C5F2D] hover:bg-[#1E4D2B] text-white font-bold border-3 sm:border-4 border-slate-900 dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[1px_1px_0px_0px_rgba(255,255,255,1)] dark:sm:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 w-full sm:w-auto"
                 >
                   <span>Try It Free</span>
-                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
 
                 <Button
                   variant="outline"
-                  className="h-14 px-8 bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold text-lg border-4 border-slate-900 dark:border-white shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150"
+                  className="h-12 sm:h-14 px-6 sm:px-8 text-base sm:text-lg bg-white dark:bg-slate-900 text-slate-900 dark:text-white font-bold border-3 sm:border-4 border-slate-900 dark:border-white shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] sm:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] dark:shadow-[3px_3px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[1px_1px_0px_0px_rgba(0,0,0,1)] sm:hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] dark:hover:shadow-[1px_1px_0px_0px_rgba(255,255,255,1)] dark:sm:hover:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)] hover:translate-x-[2px] hover:translate-y-[2px] transition-all duration-150 w-full sm:w-auto"
                 >
-                  <Play className="mr-2 w-5 h-5" />
+                  <Play className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
                   Watch Demo
                 </Button>
               </div>
 
               {/* Real-time Stats - Editorial Card Style */}
-              <div className="grid grid-cols-3 gap-4 pt-8">
-                <div className="relative p-4 bg-white dark:bg-slate-900 border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-transform">
-                  <div className="absolute top-2 right-2 w-3 h-3 bg-[#00A896] rounded-full animate-pulse"></div>
-                  <div className="text-3xl font-black text-[#FF6B35]">{(activeUsers/1000).toFixed(1)}K+</div>
-                  <div className="text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">Live Users</div>
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-8">
+                <div className="relative p-3 sm:p-4 bg-white dark:bg-slate-900 border-3 sm:border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-transform">
+                  <div className="absolute top-2 right-2 w-2 h-2 sm:w-3 sm:h-3 bg-[#4A6E8A] rounded-full animate-pulse"></div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#6B4654]">{(activeUsers/1000).toFixed(1)}K+</div>
+                  <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">Live Users</div>
                 </div>
 
-                <div className="relative p-4 bg-white dark:bg-slate-900 border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-transform">
-                  <div className="absolute top-2 right-2 w-3 h-3 bg-[#E07A5F] rounded-full animate-pulse"></div>
-                  <div className="text-3xl font-black text-[#028090] dark:text-[#00A896]">{(queries/1000).toFixed(0)}K+</div>
-                  <div className="text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">Queries</div>
+                <div className="relative p-3 sm:p-4 bg-white dark:bg-slate-900 border-3 sm:border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-transform">
+                  <div className="absolute top-2 right-2 w-2 h-2 sm:w-3 sm:h-3 bg-[#A0674A] rounded-full animate-pulse"></div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#2C5F2D] dark:text-[#4A6E8A]">{(queries/1000).toFixed(0)}K+</div>
+                  <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">Queries</div>
                 </div>
 
-                <div className="relative p-4 bg-white dark:bg-slate-900 border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-transform">
-                  <div className="absolute top-2 right-2 w-3 h-3 bg-[#2D6A4F] rounded-full"></div>
-                  <div className="text-3xl font-black text-[#2D6A4F]">99.9%</div>
-                  <div className="text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">Uptime</div>
+                <div className="relative p-3 sm:p-4 bg-white dark:bg-slate-900 border-3 sm:border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-transform">
+                  <div className="absolute top-2 right-2 w-2 h-2 sm:w-3 sm:h-3 bg-[#2C5F2D] rounded-full"></div>
+                  <div className="text-2xl sm:text-3xl font-black text-[#2C5F2D]">99.9%</div>
+                  <div className="text-[10px] sm:text-xs font-bold uppercase tracking-wide text-slate-600 dark:text-slate-400">Uptime</div>
                 </div>
               </div>
 
@@ -195,43 +195,43 @@ const Hero = () => {
             <div className="lg:col-span-5 space-y-6">
 
               {/* Feature Cards - Stacked, Editorial Style */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
 
                 {/* Card 1 - Lightning Fast */}
-                <div className="group relative bg-gradient-to-br from-[#FF6B35] to-[#F7931E] p-6 border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white dark:bg-slate-900 border-3 border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-                      <Zap className="w-6 h-6 text-[#FF6B35]" />
+                <div className="group relative bg-gradient-to-br from-[#6B4654] to-[#8B6F47] p-4 sm:p-6 border-3 sm:border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-900 border-2 sm:border-3 border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+                      <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-[#6B4654]" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-black text-white mb-2">Lightning Fast</h3>
-                      <p className="text-sm text-white/90 font-medium">Sub-second responses. No waiting. No buffering. Just pure speed.</p>
+                      <h3 className="text-lg sm:text-xl font-black text-white mb-1 sm:mb-2">Lightning Fast</h3>
+                      <p className="text-xs sm:text-sm text-white/90 font-medium">Sub-second responses. No waiting. No buffering. Just pure speed.</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Card 2 - Enterprise Security */}
-                <div className="group relative bg-gradient-to-br from-[#028090] to-[#00A896] p-6 border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] ml-8">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white dark:bg-slate-900 border-3 border-slate-900 dark:border-white flex items-center justify-center transform group-hover:-rotate-12 transition-transform">
-                      <Shield className="w-6 h-6 text-[#028090]" />
+                <div className="group relative bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] p-4 sm:p-6 border-3 sm:border-4 border-slate-900 dark:border-white transform hover:-rotate-1 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] ml-4 sm:ml-8">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-900 border-2 sm:border-3 border-slate-900 dark:border-white flex items-center justify-center transform group-hover:-rotate-12 transition-transform">
+                      <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-[#2C5F2D]" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-black text-white mb-2">Fort Knox Security</h3>
-                      <p className="text-sm text-white/90 font-medium">Military-grade encryption. Your data stays yours. Period.</p>
+                      <h3 className="text-lg sm:text-xl font-black text-white mb-1 sm:mb-2">Fort Knox Security</h3>
+                      <p className="text-xs sm:text-sm text-white/90 font-medium">Military-grade encryption. Your data stays yours. Period.</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Card 3 - Advanced AI */}
-                <div className="group relative bg-gradient-to-br from-[#2D6A4F] to-[#00A896] p-6 border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 bg-white dark:bg-slate-900 border-3 border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform">
-                      <Cpu className="w-6 h-6 text-[#2D6A4F]" />
+                <div className="group relative bg-gradient-to-br from-[#2C5F2D] to-[#4A6E8A] p-4 sm:p-6 border-3 sm:border-4 border-slate-900 dark:border-white transform hover:rotate-1 transition-all duration-300 shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] sm:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] dark:shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] dark:sm:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)]">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-slate-900 border-2 sm:border-3 border-slate-900 dark:border-white flex items-center justify-center transform group-hover:rotate-12 transition-transform">
+                      <Cpu className="w-5 h-5 sm:w-6 sm:h-6 text-[#2C5F2D]" />
                     </div>
                     <div className="flex-1">
-                      <h3 className="text-xl font-black text-white mb-2">Built for India</h3>
-                      <p className="text-sm text-white/90 font-medium">Understands Hindi, Tamil, Bengali, and 20+ Indian languages natively.</p>
+                      <h3 className="text-lg sm:text-xl font-black text-white mb-1 sm:mb-2">Built for India</h3>
+                      <p className="text-xs sm:text-sm text-white/90 font-medium">Understands Hindi, Tamil, Bengali, and 20+ Indian languages natively.</p>
                     </div>
                   </div>
                 </div>
@@ -270,8 +270,8 @@ const Hero = () => {
       {/* Decorative Elements - Hand-drawn style */}
       <div className="absolute bottom-8 left-8 hidden lg:block">
         <div className="relative w-32 h-32 transform rotate-12">
-          <div className="absolute inset-0 border-4 border-[#E07A5F] rounded-full opacity-60" style={{ borderRadius: '48% 52% 55% 45% / 52% 48% 52% 48%' }}></div>
-          <div className="absolute inset-2 border-4 border-[#FF6B35] rounded-full opacity-40" style={{ borderRadius: '52% 48% 45% 55% / 48% 52% 48% 52%' }}></div>
+          <div className="absolute inset-0 border-4 border-[#A0674A] rounded-full opacity-60" style={{ borderRadius: '48% 52% 55% 45% / 52% 48% 52% 48%' }}></div>
+          <div className="absolute inset-2 border-4 border-[#6B4654] rounded-full opacity-40" style={{ borderRadius: '52% 48% 45% 55% / 48% 52% 48% 52%' }}></div>
         </div>
       </div>
 

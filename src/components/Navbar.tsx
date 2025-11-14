@@ -39,7 +39,7 @@ const Navbar = () => {
             href="/"
             className="group cursor-pointer"
           >
-            <span className="text-lg sm:text-xl md:text-2xl font-black bg-gradient-text bg-clip-text text-transparent group-hover:scale-105 inline-block transition-transform duration-300">
+            <span className="text-xl sm:text-2xl md:text-2xl font-black bg-gradient-text bg-clip-text text-transparent group-hover:scale-105 inline-block transition-transform duration-300">
               BGAI
             </span>
           </a>
@@ -63,7 +63,7 @@ const Navbar = () => {
             <Button
               onClick={() => navigate('/chat')}
               variant="hero"
-              className="shadow-glow text-sm lg:text-base px-4 lg:px-6"
+              className="shadow-glow text-sm lg:text-base px-4 lg:px-6 h-9 lg:h-10 hover:scale-105 transition-all duration-300"
             >
               Get Started
             </Button>
@@ -106,7 +106,7 @@ const Navbar = () => {
                   setIsMobileMenuOpen(false);
                 }}
                 variant="hero"
-                className="w-full shadow-glow"
+                className="w-full shadow-glow h-12 text-base font-bold"
               >
                 Get Started
               </Button>
