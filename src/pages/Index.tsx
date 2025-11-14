@@ -1,7 +1,11 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import Stats from "@/components/Stats";
 import TrustSection from "@/components/TrustSection";
+import Testimonials from "@/components/Testimonials";
+import Pricing from "@/components/Pricing";
+import FAQ from "@/components/FAQ";
 import CTA from "@/components/CTA";
 import { Github, Linkedin, Mail, ArrowUp, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
@@ -26,8 +30,12 @@ const Index = () => {
     <main className="min-h-screen relative">
       <Navbar />
       <Hero />
+      <Stats />
       <Features />
       <TrustSection />
+      <Testimonials />
+      <Pricing />
+      <FAQ />
       <CTA />
 
       {/* Enhanced Footer */}
