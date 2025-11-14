@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Send, ArrowLeft, Loader2, User, Copy, Check, Terminal, Zap, Radio } from 'lucide-react';
+import { Send, ArrowLeft, Loader2, User, Copy, Check, Bot } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Message, sendMessageStream } from '@/lib/gemini';
 import { toast } from 'sonner';
@@ -18,7 +18,7 @@ const Chat = () => {
     {
       id: '1',
       role: 'assistant',
-      content: '>>> NAMASTE! 🙏\n\nWelcome to **BharatGoAi** - Your REVOLUTIONARY AI assistant.\n\nHow may I ASSIST you today? 🇮🇳',
+      content: 'Namaste! 🙏\n\nWelcome to **BharatGoAi** - Your AI assistant for India.\n\nHow may I assist you today? 🇮🇳',
       timestamp: new Date(),
     },
   ]);
@@ -30,27 +30,21 @@ const Chat = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Logging
-    console.log('╔═══════════════════════════════════════════════════════════════╗');
-    console.log('║              BHARATGOAI CHAT SESSION STARTED                  ║');
-    console.log('╠═══════════════════════════════════════════════════════════════╣');
-    console.log('│ Session Start:', new Date().toLocaleString());
-    console.log('│ Platform: BharatGoAi - India\'s Advanced AI Platform');
-    console.log('╚═══════════════════════════════════════════════════════════════╝');
+    console.log('BharatGoAi Chat Session Started:', new Date().toLocaleString());
   }, []);
 
   const copyToClipboard = (code: string, codeId: string) => {
     navigator.clipboard.writeText(code).then(() => {
       setCopiedCode(codeId);
-      toast.success('CODE COPIED!');
+      toast.success('Code copied to clipboard');
       setTimeout(() => setCopiedCode(null), 2000);
     }).catch(() => {
-      toast.error('COPY FAILED');
+      toast.error('Failed to copy code');
     });
   };
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   useEffect(() => {
@@ -80,13 +74,7 @@ const Chat = () => {
       timestamp: new Date(),
     };
 
-    console.log('╔═══════════════════════════════════════════════════════════════╗');
-    console.log('║                    USER INPUT LOG                             ║');
-    console.log('╠═══════════════════════════════════════════════════════════════╣');
-    console.log('│ Timestamp:', userMessage.timestamp.toLocaleString());
-    console.log('│ User Input:', userMessage.content);
-    console.log('╚═══════════════════════════════════════════════════════════════╝');
-
+    console.log('User Input:', userMessage.content);
     logUserInput(userMessage.id, userMessage.content, messages.length + 1);
 
     setMessages(prev => [...prev, userMessage]);
@@ -132,11 +120,11 @@ const Chat = () => {
       console.log('AI Response Time:', responseTime, 'ms');
 
     } catch (error: any) {
-      console.error('ERROR:', error);
+      console.error('Error:', error);
       const friendlyMessage: Message = {
         id: assistantMessageId,
         role: 'assistant',
-        content: '>>> ERROR_404\n\nSomething went WRONG! 😔\n\nPlease try again. System will RECOVER.\n\nThank you for your PATIENCE! 🙏',
+        content: 'I apologize, but something went wrong. Please try again.',
         timestamp: new Date(),
       };
 
@@ -161,43 +149,35 @@ const Chat = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col pixel-grid scanlines">
-      {/* BRUTAL HEADER */}
-      <header className="sticky top-0 z-50 w-full border-b-4 border-foreground bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-lg">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex h-16 items-center justify-between">
           <div className="flex items-center gap-3">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => navigate('/')}
-              className="brutal-border bg-secondary hover:bg-secondary/80 p-2 hover:rotate-brutal-2 hover:scale-110 transition-all duration-200"
             >
-              <ArrowLeft className="h-5 w-5 text-foreground animate-glitch" strokeWidth={3} />
+              <ArrowLeft className="h-5 w-5" />
             </Button>
-            <div className="brutal-border bg-primary px-4 py-2 rotate-brutal-1">
-              <div className="flex items-center gap-2">
-                <Terminal className="w-5 h-5 text-foreground animate-pulse-brutal" strokeWidth={3} />
-                <div>
-                  <h1 className="text-brutal text-base text-foreground">BGAI</h1>
-                </div>
-                <Radio className="w-4 h-4 text-destructive animate-glitch" />
-              </div>
+            <div className="flex items-center gap-2">
+              <Bot className="w-5 h-5 text-primary" />
+              <h1 className="text-lg font-semibold text-foreground">BharatGoAi</h1>
             </div>
           </div>
 
           {/* Status indicator */}
-          <div className="brutal-border bg-accent px-4 py-2 rotate-brutal-2">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-primary border-2 border-foreground animate-pixel-drift" />
-              <span className="text-retro text-xs text-foreground font-bold">ONLINE</span>
-            </div>
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 bg-green-500 rounded-full" />
+            <span className="text-sm text-muted-foreground">Online</span>
           </div>
         </div>
       </header>
 
-      {/* MESSAGES AREA - BRUTAL STYLE */}
-      <div className="flex-1 overflow-y-auto pb-4 noise-texture">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-5xl py-4 sm:py-6 lg:py-8">
+      {/* Messages Area */}
+      <div className="flex-1 overflow-y-auto pb-4">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-4xl py-4 sm:py-6 lg:py-8">
           <div className="space-y-6">
             {messages.map((message, index) => (
               <div
@@ -206,69 +186,63 @@ const Chat = () => {
                   message.role === 'user' ? 'flex-row-reverse' : ''
                 }`}
               >
-                {/* BRUTAL AVATAR */}
+                {/* Avatar */}
                 <div className="flex-shrink-0">
                   <div
-                    className={`w-10 h-10 brutal-border flex items-center justify-center ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center ${
                       message.role === 'user'
-                        ? 'bg-quaternary rotate-brutal-2'
-                        : 'bg-primary rotate-brutal-1'
-                    } hover:rotate-brutal-4 hover:scale-110 transition-all duration-200`}
+                        ? 'bg-primary/10'
+                        : 'bg-muted'
+                    }`}
                   >
                     {message.role === 'user' ? (
-                      <User className="w-5 h-5 text-foreground animate-pulse-brutal" strokeWidth={3} />
+                      <User className="w-5 h-5 text-primary" />
                     ) : (
-                      <Terminal className="w-5 h-5 text-foreground animate-glitch" strokeWidth={3} />
+                      <Bot className="w-5 h-5 text-muted-foreground" />
                     )}
                   </div>
                 </div>
 
-                {/* BRUTAL MESSAGE CONTENT */}
+                {/* Message Content */}
                 <div
                   className={`flex-1 ${
                     message.role === 'user' ? 'flex justify-end' : ''
                   }`}
                 >
                   <div
-                    className={`inline-block max-w-full sm:max-w-[85%] brutal-border-thick p-4 ${
+                    className={`inline-block max-w-full sm:max-w-[85%] rounded-lg p-4 ${
                       message.role === 'user'
-                        ? 'bg-quaternary rotate-brutal-1'
-                        : 'bg-card rotate-brutal-2'
-                    } noise-texture relative`}
+                        ? 'bg-primary text-primary-foreground'
+                        : 'bg-muted'
+                    }`}
                   >
-                    {/* Decorative corner */}
-                    <div className={`absolute -top-2 -right-2 w-4 h-4 border-2 border-foreground ${
-                      message.role === 'user' ? 'bg-primary' : 'bg-secondary'
-                    } animate-pixel-drift`} />
-
-                    <div className="text-retro text-sm sm:text-base leading-relaxed break-words overflow-x-auto text-foreground">
+                    <div className="text-sm sm:text-base leading-relaxed break-words overflow-x-auto">
                       {message.role === 'user' ? (
-                        <div className="whitespace-pre-wrap font-bold">{message.content}</div>
+                        <div className="whitespace-pre-wrap">{message.content}</div>
                       ) : message.content === '' ? (
-                        <div className="flex items-center gap-2">
-                          <Terminal className="w-5 h-5 animate-glitch text-primary" />
-                          <span className="text-brutal">THINKING...</span>
-                          <Zap className="w-4 h-4 animate-bounce-brutal text-destructive" />
+                        <div className="flex items-center gap-2 text-muted-foreground">
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          <span>Thinking...</span>
                         </div>
                       ) : (
                         <ReactMarkdown
                           remarkPlugins={[remarkGfm, remarkMath]}
                           rehypePlugins={[rehypeKatex, rehypeHighlight]}
                           components={{
-                            h1: ({node, ...props}) => <h1 className="text-brutal text-xl sm:text-2xl mt-4 mb-2" {...props} />,
-                            h2: ({node, ...props}) => <h2 className="text-brutal text-lg sm:text-xl mt-3 mb-2" {...props} />,
-                            h3: ({node, ...props}) => <h3 className="text-brutal text-base sm:text-lg mt-2 mb-1" {...props} />,
+                            h1: ({node, ...props}) => <h1 className="text-xl sm:text-2xl font-bold mt-4 mb-2" {...props} />,
+                            h2: ({node, ...props}) => <h2 className="text-lg sm:text-xl font-bold mt-3 mb-2" {...props} />,
+                            h3: ({node, ...props}) => <h3 className="text-base sm:text-lg font-semibold mt-2 mb-1" {...props} />,
                             p: ({node, ...props}) => <p className="mb-2 leading-relaxed" {...props} />,
                             ul: ({node, ...props}) => <ul className="list-disc list-inside mb-2 space-y-1" {...props} />,
                             ol: ({node, ...props}) => <ol className="list-decimal list-inside mb-2 space-y-1" {...props} />,
                             li: ({node, ...props}) => <li className="ml-2" {...props} />,
                             code: ({node, inline, className, children, ...props}: any) => {
                               return inline ? (
-                                <code className="brutal-border bg-primary text-foreground px-2 py-1 text-xs font-bold" {...props}>
+                                <code className="bg-background/50 text-foreground px-2 py-0.5 rounded text-xs font-mono" {...props}>
                                   {children}
                                 </code>
                               ) : (
-                                <code className={`${className} block brutal-border bg-muted p-3 text-xs overflow-x-auto font-mono`} {...props}>
+                                <code className={`${className} block bg-background/50 p-3 rounded text-xs overflow-x-auto font-mono`} {...props}>
                                   {children}
                                 </code>
                               );
@@ -280,30 +254,30 @@ const Chat = () => {
 
                               return (
                                 <div className="relative group mb-2">
-                                  <pre className="brutal-border bg-muted p-3 overflow-x-auto pr-12" {...props}>
+                                  <pre className="bg-background/50 rounded p-3 overflow-x-auto pr-12" {...props}>
                                     {children}
                                   </pre>
                                   <button
                                     onClick={() => copyToClipboard(codeContent, codeId)}
-                                    className="absolute top-2 right-2 brutal-border bg-background hover:bg-primary p-2 opacity-100 hover:rotate-brutal-2 hover:scale-110 transition-all duration-200"
-                                    title="COPY CODE"
+                                    className="absolute top-2 right-2 p-2 rounded bg-background/80 hover:bg-background transition-colors"
+                                    title="Copy code"
                                   >
                                     {isCopied ? (
-                                      <Check className="w-4 h-4 text-primary animate-glitch" strokeWidth={3} />
+                                      <Check className="w-4 h-4 text-green-500" />
                                     ) : (
-                                      <Copy className="w-4 h-4 text-foreground" strokeWidth={3} />
+                                      <Copy className="w-4 h-4 text-muted-foreground" />
                                     )}
                                   </button>
                                 </div>
                               );
                             },
-                            a: ({node, ...props}) => <a className="text-primary hover:text-secondary underline font-bold" {...props} />,
-                            strong: ({node, ...props}) => <strong className="font-black text-foreground bg-primary px-1" {...props} />,
-                            em: ({node, ...props}) => <em className="italic font-bold" {...props} />,
-                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 my-2 italic font-bold" {...props} />,
-                            table: ({node, ...props}) => <div className="overflow-x-auto mb-2"><table className="min-w-full brutal-border" {...props} /></div>,
-                            th: ({node, ...props}) => <th className="brutal-border px-4 py-2 bg-primary font-black text-foreground" {...props} />,
-                            td: ({node, ...props}) => <td className="brutal-border px-4 py-2" {...props} />,
+                            a: ({node, ...props}) => <a className="text-primary hover:underline" {...props} />,
+                            strong: ({node, ...props}) => <strong className="font-semibold" {...props} />,
+                            em: ({node, ...props}) => <em className="italic" {...props} />,
+                            blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-primary pl-4 my-2 italic" {...props} />,
+                            table: ({node, ...props}) => <div className="overflow-x-auto mb-2"><table className="min-w-full border border-border rounded" {...props} /></div>,
+                            th: ({node, ...props}) => <th className="border border-border px-4 py-2 bg-muted font-semibold" {...props} />,
+                            td: ({node, ...props}) => <td className="border border-border px-4 py-2" {...props} />,
                           }}
                         >
                           {message.content}
@@ -311,13 +285,13 @@ const Chat = () => {
                       )}
                     </div>
 
-                    {/* BRUTAL TIMESTAMP */}
-                    <div className="mt-2 pt-2 border-t-2 border-foreground/20">
-                      <span className="text-pixel text-[10px] text-muted-foreground uppercase">
-                        [{message.timestamp.toLocaleTimeString([], {
+                    {/* Timestamp */}
+                    <div className="mt-2 pt-2 border-t border-border/20">
+                      <span className="text-xs text-muted-foreground">
+                        {message.timestamp.toLocaleTimeString([], {
                           hour: '2-digit',
                           minute: '2-digit',
-                        })}]
+                        })}
                       </span>
                     </div>
                   </div>
@@ -330,9 +304,9 @@ const Chat = () => {
         </div>
       </div>
 
-      {/* BRUTAL INPUT AREA */}
-      <div className="sticky bottom-0 w-full border-t-4 border-foreground bg-background">
-        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-5xl py-4">
+      {/* Input Area */}
+      <div className="sticky bottom-0 w-full border-t border-border bg-background">
+        <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 max-w-4xl py-4">
           <div className="relative flex items-end gap-3">
             <div className="flex-1 relative">
               <textarea
@@ -340,36 +314,35 @@ const Chat = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyDown}
-                placeholder="TYPE_YOUR_MESSAGE_HERE..."
+                placeholder="Type your message here..."
                 rows={1}
-                className="w-full resize-none brutal-border-thick bg-card px-4 py-3 pr-14 text-retro text-sm font-bold focus:outline-none focus:bg-primary/20 transition-colors max-h-32 overflow-y-auto placeholder:text-muted-foreground"
+                className="w-full resize-none border border-border rounded-lg bg-background px-4 py-3 pr-14 text-sm focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all max-h-32 overflow-y-auto placeholder:text-muted-foreground"
                 disabled={isLoading}
               />
 
-              {/* BRUTAL SEND BUTTON */}
+              {/* Send Button */}
               <Button
                 onClick={handleSend}
                 disabled={!input.trim() || isLoading}
-                className="absolute right-2 bottom-2 brutal-border bg-accent hover:bg-accent/80 p-2 disabled:opacity-50 hover:rotate-brutal-3 hover:scale-110 transition-all duration-200"
+                size="icon"
+                className="absolute right-2 bottom-2"
               >
                 {isLoading ? (
-                  <Loader2 className="w-5 h-5 animate-spin text-foreground" strokeWidth={3} />
+                  <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
-                  <Send className="w-5 h-5 text-foreground" strokeWidth={3} />
+                  <Send className="w-5 h-5" />
                 )}
               </Button>
             </div>
           </div>
 
-          {/* BRUTAL FOOTER TEXT */}
+          {/* Footer Text */}
           <div className="flex flex-col items-center gap-2 mt-3">
-            <div className="brutal-border bg-primary px-4 py-2 rotate-brutal-1">
-              <p className="text-brutal text-[10px] text-foreground text-center">
-                BHARATGOAI - INDIA'S AI 🇮🇳
-              </p>
-            </div>
-            <p className="text-pixel text-[10px] text-muted-foreground/60 text-center">
-              [WARNING: AI MAY MAKE MISTAKES. VERIFY DATA.]
+            <p className="text-xs text-muted-foreground text-center">
+              BharatGoAi - India's AI Platform 🇮🇳
+            </p>
+            <p className="text-xs text-muted-foreground/60 text-center">
+              AI may make mistakes. Please verify important information.
             </p>
           </div>
         </div>
