@@ -88,20 +88,20 @@ const Features = () => {
       <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-7xl relative z-10">
         {/* Ultra-Premium Section Header */}
         <div className="text-center max-w-4xl mx-auto mb-24 sm:mb-32 space-y-8 animate-fade-in-up">
-          {/* Advanced Badge */}
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border-2 border-primary/30 bg-gradient-to-r from-primary/15 via-secondary/10 to-accent/15 backdrop-blur-2xl shadow-2xl relative overflow-hidden group">
+          {/* Refined Badge */}
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-primary/30 bg-gradient-to-r from-primary/15 via-secondary/10 to-accent/15 backdrop-blur-2xl shadow-xl relative overflow-hidden group">
             <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <Sparkles className="w-4 h-4 text-primary animate-pulse relative z-10" />
-            <span className="text-sm font-bold tracking-wider text-foreground/90 uppercase relative z-10">Premium Features</span>
+            <span className="text-sm font-semibold tracking-wide text-foreground/90 uppercase relative z-10">Premium Features</span>
             <div className="w-2 h-2 rounded-full bg-primary animate-pulse relative z-10 shadow-lg shadow-primary/50"></div>
           </div>
 
-          {/* Enhanced Typography */}
-          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1.05]">
+          {/* Refined Minimal Typography */}
+          <h2 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tight leading-[1.05] heading-refined">
             <span className="block text-foreground/95 mb-3 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               Enterprise-Grade
             </span>
-            <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent drop-shadow-2xl animate-fade-in-up" style={{
+            <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent drop-shadow-2xl animate-fade-in-up font-semibold" style={{
               animationDelay: '0.2s',
               textShadow: '0 0 80px rgba(139, 92, 246, 0.4)'
             }}>
@@ -109,7 +109,7 @@ const Features = () => {
             </span>
           </h2>
 
-          <p className="text-lg sm:text-xl text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          <p className="text-lg sm:text-xl text-muted-foreground/90 max-w-3xl mx-auto text-airy animate-fade-in-up font-normal" style={{ animationDelay: '0.3s' }}>
             Experience cutting-edge artificial intelligence with advanced features designed for modern businesses
           </p>
         </div>
@@ -157,15 +157,15 @@ const Features = () => {
                     </div>
                   </div>
 
-                  {/* Enhanced Content */}
+                  {/* Refined Minimal Content */}
                   <div className="space-y-5 relative z-10">
                     <div>
-                      <h3 className="text-2xl sm:text-3xl font-bold text-foreground/95 group-hover:text-foreground transition-colors duration-300 leading-tight">
+                      <h3 className="text-2xl sm:text-3xl font-semibold text-foreground/95 group-hover:text-foreground transition-colors duration-300 leading-tight tracking-tight">
                         {feature.title}
                       </h3>
                     </div>
 
-                    <p className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed group-hover:text-muted-foreground transition-colors duration-300">
+                    <p className="text-base sm:text-lg text-muted-foreground/80 leading-relaxed group-hover:text-muted-foreground transition-colors duration-300 font-normal">
                       {feature.description}
                     </p>
 

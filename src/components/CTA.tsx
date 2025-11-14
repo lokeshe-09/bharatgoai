@@ -23,17 +23,17 @@ const CTA = () => {
             <span className="text-sm font-semibold bg-gradient-text bg-clip-text text-transparent">Start Your AI Journey Today</span>
           </div>
 
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.1]">
+          <h2 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] heading-refined">
             <span className="text-foreground/95">Ready to Experience</span>
             <br />
-            <span className="bg-gradient-text bg-clip-text text-transparent drop-shadow-2xl">
+            <span className="bg-gradient-text bg-clip-text text-transparent drop-shadow-2xl font-semibold">
               India's Most Advanced AI?
             </span>
           </h2>
 
-          <p className="text-xl sm:text-2xl text-muted-foreground/90 max-w-3xl mx-auto leading-relaxed font-light">
-            Join thousands of innovators building the future with BharatGoAi. 
-            <span className="text-primary font-medium"> Experience enterprise-grade AI</span> technology 
+          <p className="text-xl sm:text-2xl text-muted-foreground/90 max-w-3xl mx-auto text-airy font-normal">
+            Join thousands of innovators building the future with BharatGoAi.
+            <span className="text-primary font-medium"> Experience enterprise-grade AI</span> technology
             designed for tomorrow's challenges.
           </p>
 

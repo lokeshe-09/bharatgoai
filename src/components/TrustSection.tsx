@@ -41,12 +41,12 @@ const TrustSection = () => {
       
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-4 mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold">
+          <h2 className="text-4xl sm:text-5xl font-semibold heading-minimal">
             <span className="bg-gradient-text bg-clip-text text-transparent">
               Built for Trust & Performance
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto text-airy font-normal">
             Advanced security architecture combined with cutting-edge AI technology—
             engineered for the most demanding enterprise environments.
           </p>
@@ -64,10 +64,10 @@ const TrustSection = () => {
                   <feature.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 text-foreground">
+                  <h3 className="text-xl font-semibold mb-2 text-foreground tracking-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground leading-relaxed font-normal">
                     {feature.description}
                   </p>
                 </div>
