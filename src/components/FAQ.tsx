@@ -81,11 +81,24 @@ const FAQ = () => {
               className="group animate-fade-in-up"
               style={{ animationDelay: `${index * 0.05}s` }}
             >
-              <div className={`rounded-2xl backdrop-blur-xl border transition-all duration-300 overflow-hidden ${
+              <div className={`rounded-2xl transition-all duration-300 overflow-hidden relative ${
                 openIndex === index
-                  ? 'bg-card/60 border-primary/50 shadow-xl'
-                  : 'bg-card/30 border-border/40 hover:border-border/60'
+                  ? 'glass-tinted border-primary/40 shadow-2xl'
+                  : 'glass-frosted border-border/30 hover:border-border/50 glass-hover'
               }`}>
+                {/* Subtle top accent for open state */}
+                {openIndex === index && (
+                  <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden rounded-t-2xl">
+                    <div className="h-full bg-gradient-to-r from-primary via-secondary to-accent shadow-lg" style={{
+                      boxShadow: '0 3px 15px rgba(162, 89, 255, 0.3)'
+                    }}></div>
+                  </div>
+                )}
+
+                {/* Premium shimmer on hover */}
+                <div className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity duration-1000 pointer-events-none overflow-hidden rounded-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-2000"></div>
+                </div>
                 {/* Question */}
                 <button
                   onClick={() => toggleFAQ(index)}
