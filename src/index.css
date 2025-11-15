@@ -245,7 +245,7 @@
   }
 
   /* Organic Multi-Layer Atmospheric Background */
-  /* Layer 1: Asymmetric gradient orbs with varied motion */
+  /* Layer 1: Asymmetric gradient orbs with varied motion - responsive sizing */
   body::before {
     content: '';
     position: fixed;
@@ -260,6 +260,16 @@
     z-index: 0;
     animation: ambient-drift 32s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     will-change: transform;
+  }
+
+  /* Responsive adjustments for smaller screens */
+  @media (max-width: 768px) {
+    body::before {
+      background:
+        radial-gradient(ellipse 420px 340px at 18% 28%, rgba(162, 89, 255, 0.15) 0%, transparent 52%),
+        radial-gradient(ellipse 360px 290px at 82% 72%, rgba(99, 102, 241, 0.13) 0%, transparent 48%),
+        radial-gradient(circle 320px at 47% 53%, rgba(59, 130, 246, 0.11) 0%, transparent 56%);
+    }
   }
 
   /* Layer 2: Organic mesh pattern with noise */
@@ -568,6 +578,118 @@
     pointer-events: none;
     filter: blur(8px);
     transform: rotate(-23deg);
+  }
+
+  /* Ultra-Premium Glass Effects */
+  .glass-ultra {
+    background: linear-gradient(135deg,
+      var(--glass-bg-tinted) 0%,
+      var(--glass-bg-frosted) 100%);
+    backdrop-filter: var(--glass-blur-intense) saturate(185%) brightness(1.06) contrast(1.02);
+    -webkit-backdrop-filter: var(--glass-blur-intense) saturate(185%) brightness(1.06) contrast(1.02);
+    border: 2px solid var(--glass-border-bright);
+    box-shadow: var(--shadow-glass-2xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Multi-layer glass with depth */
+  .glass-multilayer {
+    position: relative;
+  }
+
+  .glass-multilayer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(165deg,
+      rgba(255, 255, 255, 0.15) 0%,
+      transparent 25%,
+      transparent 75%,
+      rgba(0, 0, 0, 0.05) 100%);
+    border-radius: inherit;
+    pointer-events: none;
+  }
+
+  .glass-multilayer::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: radial-gradient(circle at 30% 20%,
+      rgba(255, 255, 255, 0.2) 0%,
+      transparent 50%);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.7;
+  }
+
+  /* Refraction effect glass */
+  .glass-refract {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .glass-refract::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: linear-gradient(45deg,
+      var(--refraction-r) 0%,
+      transparent 20%,
+      transparent 40%,
+      var(--refraction-g) 50%,
+      transparent 60%,
+      transparent 80%,
+      var(--refraction-b) 100%);
+    opacity: 0;
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    pointer-events: none;
+    filter: blur(6px);
+  }
+
+  .glass-refract:hover::before {
+    opacity: 1;
+  }
+
+  /* Noise texture overlay for organic glass feel */
+  .glass-noise {
+    position: relative;
+  }
+
+  .glass-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.95' numOctaves='5' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.035;
+    pointer-events: none;
+    border-radius: inherit;
+    mix-blend-mode: overlay;
+  }
+
+  /* Liquid glass effect */
+  .glass-liquid {
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.08) 0%,
+      rgba(255, 255, 255, 0.04) 50%,
+      rgba(255, 255, 255, 0.08) 100%);
+    backdrop-filter: var(--glass-blur-heavy) saturate(175%) brightness(1.04);
+    -webkit-backdrop-filter: var(--glass-blur-heavy) saturate(175%) brightness(1.04);
+    border: 1.5px solid rgba(255, 255, 255, 0.18);
+    box-shadow:
+      0 8px 32px -4px rgba(31, 38, 135, 0.15),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.05);
+    position: relative;
+  }
+
+  .dark .glass-liquid {
+    background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0.03) 50%,
+      rgba(255, 255, 255, 0.06) 100%);
+    backdrop-filter: var(--glass-blur-intense) saturate(155%) brightness(1.1);
+    -webkit-backdrop-filter: var(--glass-blur-intense) saturate(155%) brightness(1.1);
   }
 }
 
@@ -1108,5 +1230,93 @@ html {
   .transform-3d {
     transform-style: preserve-3d;
     backface-visibility: hidden;
+  }
+
+  /* Responsive Utilities */
+  .text-responsive-xs {
+    font-size: clamp(0.75rem, 2vw, 0.875rem);
+  }
+
+  .text-responsive-sm {
+    font-size: clamp(0.875rem, 2.5vw, 1rem);
+  }
+
+  .text-responsive-base {
+    font-size: clamp(1rem, 3vw, 1.125rem);
+  }
+
+  .text-responsive-lg {
+    font-size: clamp(1.125rem, 3.5vw, 1.25rem);
+  }
+
+  .text-responsive-xl {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  .text-responsive-2xl {
+    font-size: clamp(1.5rem, 5vw, 1.875rem);
+  }
+
+  .text-responsive-3xl {
+    font-size: clamp(1.875rem, 6vw, 2.25rem);
+  }
+
+  .text-responsive-4xl {
+    font-size: clamp(2.25rem, 7vw, 3rem);
+  }
+
+  .text-responsive-5xl {
+    font-size: clamp(3rem, 8vw, 3.75rem);
+  }
+
+  .text-responsive-6xl {
+    font-size: clamp(3.75rem, 10vw, 4.5rem);
+  }
+
+  /* Responsive spacing utilities */
+  .space-responsive {
+    padding: clamp(1rem, 4vw, 2rem);
+  }
+
+  .space-responsive-lg {
+    padding: clamp(1.5rem, 6vw, 3rem);
+  }
+
+  .space-responsive-xl {
+    padding: clamp(2rem, 8vw, 4rem);
+  }
+
+  /* Better mobile touch targets */
+  @media (max-width: 768px) {
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+
+  /* Reduce animations on mobile for performance */
+  @media (max-width: 768px) {
+    .animate-float-natural,
+    .animate-drift-slow,
+    .animate-pulse-3d {
+      animation-duration: 16s;
+    }
+  }
+
+  /* Adaptive glassmorphism for mobile */
+  @media (max-width: 768px) {
+    .glass,
+    .glass-frosted,
+    .glass-tinted {
+      backdrop-filter: var(--glass-blur-light) saturate(140%) brightness(1.02);
+      -webkit-backdrop-filter: var(--glass-blur-light) saturate(140%) brightness(1.02);
+    }
+  }
+
+  /* Enhanced focus states for accessibility */
+  .focus-visible-enhanced:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+    border-radius: 0.5rem;
   }
 }

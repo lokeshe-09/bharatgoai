@@ -76,40 +76,40 @@ const Pricing = () => {
   const navigate = useNavigate();
 
   return (
-    <section id="pricing" className="py-24 sm:py-32 lg:py-40 relative overflow-hidden bg-background">
-      {/* Background Elements */}
+    <section id="pricing" className="py-16 sm:py-24 md:py-32 lg:py-40 relative overflow-hidden bg-background">
+      {/* Background Elements - Responsive */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-[30%] left-[5%] w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 animate-pulse-3d" style={{
+        <div className="absolute top-[30%] left-[5%] w-[300px] sm:w-[450px] lg:w-[600px] h-[300px] sm:h-[450px] lg:h-[600px] rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] opacity-15 sm:opacity-20 animate-pulse-3d" style={{
           background: 'radial-gradient(circle, rgba(139, 92, 246, 0.4), transparent)',
           animationDuration: '12s'
         }}></div>
-        <div className="absolute bottom-[20%] right-[5%] w-[600px] h-[600px] rounded-full blur-[150px] opacity-20 animate-float-slow" style={{
+        <div className="absolute bottom-[20%] right-[5%] w-[300px] sm:w-[450px] lg:w-[600px] h-[300px] sm:h-[450px] lg:h-[600px] rounded-full blur-[100px] sm:blur-[120px] lg:blur-[150px] opacity-15 sm:opacity-20 animate-float-slow" style={{
           background: 'radial-gradient(circle, rgba(59, 130, 246, 0.4), transparent)',
           animationDuration: '14s'
         }}></div>
       </div>
 
-      <div className="container mx-auto px-6 sm:px-8 lg:px-12 max-w-7xl relative z-10">
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20 space-y-6">
-          <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-xl">
-            <span className="text-sm font-semibold text-foreground/90">Simple, transparent pricing</span>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-10 xl:px-12 max-w-7xl relative z-10">
+        {/* Section Header - Responsive */}
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 md:mb-20 space-y-4 sm:space-y-5 md:space-y-6">
+          <div className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-full border border-primary/30 bg-primary/10 backdrop-blur-xl">
+            <span className="text-xs sm:text-sm font-semibold text-foreground/90">Simple, transparent pricing</span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tight heading-minimal">
-            <span className="block text-foreground/95 mb-2">Choose the plan</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold tracking-tight heading-minimal">
+            <span className="block text-foreground/95 mb-1 sm:mb-2">Choose the plan</span>
             <span className="block bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
               that fits your needs
             </span>
           </h2>
 
-          <p className="text-lg text-muted-foreground/80 text-airy font-normal">
+          <p className="text-base sm:text-lg text-muted-foreground/80 text-airy font-normal px-4 sm:px-0">
             Start free, scale as you grow. No hidden fees, no surprises.
           </p>
         </div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-6 max-w-7xl mx-auto">
+        {/* Pricing Cards - Responsive */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7 lg:gap-6 max-w-7xl mx-auto">
           {pricingPlans.map((plan, index) => {
             const Icon = plan.icon;
             return (
@@ -120,19 +120,19 @@ const Pricing = () => {
                 }`}
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                {/* Popular Badge */}
+                {/* Popular Badge - Responsive */}
                 {plan.popular && (
-                  <div className="absolute -top-4 left-0 right-0 flex justify-center z-20">
-                    <div className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-sm font-semibold shadow-lg">
+                  <div className="absolute -top-3 sm:-top-4 left-0 right-0 flex justify-center z-20">
+                    <div className="px-4 sm:px-6 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-primary to-secondary text-white text-xs sm:text-sm font-semibold shadow-lg">
                       Most Popular
                     </div>
                   </div>
                 )}
 
-                {/* Card with ultra-premium glass effects */}
-                <div className={`relative h-full p-8 rounded-3xl transition-all duration-700 overflow-hidden hover:scale-[1.02] active:scale-[0.98] ${
+                {/* Card with ultra-premium glass effects - Responsive */}
+                <div className={`relative h-full p-6 sm:p-7 md:p-8 rounded-2xl sm:rounded-3xl transition-all duration-700 overflow-hidden hover:scale-[1.02] active:scale-[0.98] glass-multilayer glass-noise ${
                   plan.popular
-                    ? 'glass-tinted border-primary/40 hover:border-primary/60 shadow-2xl hover:shadow-primary/30 glow-primary'
+                    ? 'glass-tinted border-primary/40 hover:border-primary/60 shadow-2xl hover:shadow-primary/30 glow-primary glass-refract'
                     : 'glass-frosted border-border/30 hover:border-border/50 hover:shadow-xl glass-hover'
                 }`}>
 
