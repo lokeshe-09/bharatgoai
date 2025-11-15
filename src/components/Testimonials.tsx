@@ -100,13 +100,16 @@ const Testimonials = () => {
               className="group relative animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Card with subtle hover effect */}
-              <div className="relative h-full p-8 rounded-2xl bg-card/40 backdrop-blur-xl border border-border/50 hover:border-border transition-all duration-500 hover:shadow-2xl overflow-hidden">
+              {/* Card with premium glass effect */}
+              <div className="glass-card glass-hover relative overflow-hidden">
 
-                {/* Top gradient line */}
-                <div className="absolute top-0 left-0 right-0 h-1">
-                  <div className={`h-full bg-gradient-to-r ${testimonial.color} opacity-70`}></div>
+                {/* Organic gradient top accent with refraction */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden rounded-t-2xl">
+                  <div className={`h-full bg-gradient-to-r ${testimonial.color} opacity-60 group-hover:opacity-100 transition-opacity duration-500 shadow-lg`}></div>
                 </div>
+
+                {/* Subtle background gradient on hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${testimonial.color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-700`}></div>
 
                 {/* Stars */}
                 <div className="flex gap-1 mb-5">

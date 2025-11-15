@@ -113,47 +113,59 @@ const StatCard = ({ stat, index }: { stat: typeof stats[0]; index: number }) => 
       className="group relative animate-scale-in"
       style={{ animationDelay: `${index * 0.15}s` }}
     >
-      <div className="relative h-full p-8 sm:p-10 rounded-3xl bg-card/40 backdrop-blur-xl border border-border/40 hover:border-border transition-all duration-500 hover:shadow-2xl overflow-hidden">
+      <div className="glass-card glass-hover relative overflow-hidden">
 
-        {/* Top gradient accent */}
-        <div className="absolute top-0 left-0 right-0 h-1">
-          <div className={`h-full bg-gradient-to-r ${stat.color} opacity-70 group-hover:opacity-100 transition-opacity duration-500`}></div>
+        {/* Organic gradient top accent with refraction */}
+        <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden rounded-t-3xl">
+          <div className={`h-full bg-gradient-to-r ${stat.color} opacity-60 group-hover:opacity-100 transition-opacity duration-500 shadow-lg`} style={{
+            boxShadow: `0 2px 12px ${stat.color.includes('violet') ? 'rgba(139, 92, 246, 0.3)' : stat.color.includes('blue') ? 'rgba(59, 130, 246, 0.3)' : stat.color.includes('emerald') ? 'rgba(16, 185, 129, 0.3)' : 'rgba(245, 158, 11, 0.3)'}`
+          }}></div>
         </div>
 
-        {/* Background gradient on hover */}
-        <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.05] transition-opacity duration-700`}></div>
+        {/* Layered background gradient on hover */}
+        <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-700`}></div>
 
-        {/* Icon */}
-        <div className="relative mb-6">
-          <div className={`inline-flex w-16 h-16 rounded-2xl items-center justify-center bg-gradient-to-br ${stat.color} p-[2px] shadow-lg group-hover:scale-110 transition-all duration-500`}>
-            <div className="w-full h-full bg-background/95 rounded-2xl flex items-center justify-center">
-              <Icon className="w-8 h-8 text-foreground/80" strokeWidth={1.5} />
+        {/* Floating icon with 3D depth */}
+        <div className="relative mb-7 group-hover:-translate-y-1 transition-all duration-500">
+          <div className="relative inline-flex">
+            <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${stat.color} p-[2px] shadow-xl group-hover:scale-110 transition-all duration-500 hover:rotate-3`} style={{
+              boxShadow: `0 8px 32px -4px ${stat.color.includes('violet') ? 'rgba(139, 92, 246, 0.35)' : stat.color.includes('blue') ? 'rgba(59, 130, 246, 0.35)' : stat.color.includes('emerald') ? 'rgba(16, 185, 129, 0.35)' : 'rgba(245, 158, 11, 0.35)'}`
+            }}>
+              <div className="w-full h-full bg-background/95 rounded-2xl flex items-center justify-center backdrop-blur-xl">
+                <Icon className="w-8 h-8 text-foreground/85 group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
+              </div>
             </div>
+            {/* Atmospheric glow */}
+            <div className={`absolute inset-0 bg-gradient-to-br ${stat.color} opacity-0 group-hover:opacity-50 blur-2xl rounded-full transition-opacity duration-500 animate-pulse`}></div>
           </div>
         </div>
 
-        {/* Animated Number */}
+        {/* Animated Number with subtle glow */}
         <div className="relative mb-3">
           <div className="text-5xl sm:text-6xl font-bold text-foreground tracking-tight">
             {formatNumber(count)}
-            <span className="text-primary ml-1">{stat.suffix}</span>
+            <span className="text-primary ml-1 drop-shadow-lg">{stat.suffix}</span>
           </div>
         </div>
 
-        {/* Label */}
-        <h3 className="text-xl sm:text-2xl font-semibold text-foreground/95 mb-2 tracking-tight">
+        {/* Label with refined typography */}
+        <h3 className="text-xl sm:text-2xl font-semibold text-foreground/95 mb-2 tracking-tight group-hover:text-foreground transition-colors duration-300">
           {stat.label}
         </h3>
 
-        {/* Description */}
-        <p className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed font-normal">
+        {/* Description with organic spacing */}
+        <p className="text-sm sm:text-base text-muted-foreground/80 leading-relaxed font-normal group-hover:text-muted-foreground transition-colors duration-300">
           {stat.description}
         </p>
 
-        {/* Decorative element */}
-        <div className="absolute bottom-4 right-4 w-20 h-20 rounded-full opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-500" style={{
-          background: `radial-gradient(circle, ${stat.color.includes('violet') ? 'rgba(139, 92, 246, 0.4)' : stat.color.includes('blue') ? 'rgba(59, 130, 246, 0.4)' : stat.color.includes('emerald') ? 'rgba(16, 185, 129, 0.4)' : 'rgba(245, 158, 11, 0.4)'}, transparent)`
+        {/* Organic floating orb decoration */}
+        <div className="absolute bottom-5 right-5 w-24 h-24 rounded-full opacity-15 blur-3xl group-hover:opacity-25 transition-all duration-700 animate-float-natural" style={{
+          background: `radial-gradient(circle, ${stat.color.includes('violet') ? 'rgba(139, 92, 246, 0.5)' : stat.color.includes('blue') ? 'rgba(59, 130, 246, 0.5)' : stat.color.includes('emerald') ? 'rgba(16, 185, 129, 0.5)' : 'rgba(245, 158, 11, 0.5)'}, transparent)`,
+          animationDelay: `${index * 0.3}s`
         }}></div>
+
+        {/* Subtle specular highlight */}
+        <div className="glass-specular absolute top-0 left-0 right-0 h-32 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
       </div>
     </div>
   );

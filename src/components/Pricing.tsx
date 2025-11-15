@@ -129,19 +129,26 @@ const Pricing = () => {
                   </div>
                 )}
 
-                {/* Card with ultra-premium effects */}
-                <div className={`relative h-full p-8 rounded-3xl backdrop-blur-xl border transition-all duration-700 overflow-hidden hover:scale-[1.02] active:scale-[0.98] ${
+                {/* Card with ultra-premium glass effects */}
+                <div className={`relative h-full p-8 rounded-3xl transition-all duration-700 overflow-hidden hover:scale-[1.02] active:scale-[0.98] ${
                   plan.popular
-                    ? 'bg-card/60 border-primary/50 hover:border-primary shadow-2xl hover:shadow-primary/30'
-                    : 'bg-card/40 border-border/40 hover:border-border/60 hover:shadow-xl'
+                    ? 'glass-tinted border-primary/40 hover:border-primary/60 shadow-2xl hover:shadow-primary/30 glow-primary'
+                    : 'glass-frosted border-border/30 hover:border-border/50 hover:shadow-xl glass-hover'
                 }`}>
 
-                  {/* Top Gradient Line */}
+                  {/* Top Gradient Line with glow */}
                   {plan.popular && (
-                    <div className="absolute top-0 left-0 right-0 h-1">
-                      <div className={`h-full bg-gradient-to-r ${plan.gradient}`}></div>
+                    <div className="absolute top-0 left-0 right-0 h-[2px] overflow-hidden rounded-t-3xl">
+                      <div className={`h-full bg-gradient-to-r ${plan.gradient} shadow-lg`} style={{
+                        boxShadow: '0 4px 20px rgba(162, 89, 255, 0.4)'
+                      }}></div>
                     </div>
                   )}
+
+                  {/* Premium shimmer effect */}
+                  <div className={`absolute inset-0 opacity-0 transition-opacity duration-1000 pointer-events-none overflow-hidden rounded-3xl ${plan.popular ? 'group-hover:opacity-100' : ''}`}>
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-2000"></div>
+                  </div>
 
                   {/* Icon with premium animation */}
                   <div className="mb-6 group-hover:scale-110 transition-butter">
