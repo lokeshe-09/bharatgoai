@@ -62,15 +62,16 @@ const Navbar = () => {
             ))}
           </div>
 
-          {/* Desktop CTA with premium styling */}
+          {/* Desktop CTA with ultra-premium styling */}
           <div className="hidden md:flex items-center gap-4">
             <Button
               onClick={() => navigate('/chat')}
               size="lg"
-              className="relative overflow-hidden group bg-gradient-to-r from-primary via-primary/90 to-primary shadow-lg hover:shadow-primary/50 transition-smooth"
+              className="relative overflow-hidden group bg-gradient-to-r from-primary via-primary/90 to-primary shadow-lg hover:shadow-primary/50 transition-luxury hover:scale-[1.02] active:scale-[0.98]"
             >
-              <span className="relative z-10">Get Started</span>
-              <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+              <span className="relative z-10 font-semibold">Get Started</span>
+              <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/30 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+              <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
             </Button>
           </div>
 
@@ -111,7 +112,7 @@ const Navbar = () => {
                   navigate('/chat');
                   setIsMobileMenuOpen(false);
                 }}
-                className="w-full bg-gradient-to-r from-primary via-primary/90 to-primary shadow-lg"
+                className="w-full bg-gradient-to-r from-primary via-primary/90 to-primary shadow-lg hover:shadow-primary/50 transition-luxury hover:scale-[1.02] active:scale-[0.98] font-semibold"
                 size="lg"
               >
                 Get Started
