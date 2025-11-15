@@ -43,11 +43,17 @@ const Hero = () => {
             {/* Left Content */}
             <div className="lg:col-span-7 space-y-10 animate-fade-in-up">
 
-              {/* Badge with glass effect */}
+              {/* Badge with ultra-premium glass effect */}
               <div className="inline-block animate-scale-in">
-                <div className="glass-frosted text-primary px-6 py-3 rounded-full text-sm font-semibold shadow-lg relative overflow-hidden group">
-                  <span className="relative z-10">भारत का #1 AI Platform</span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="glass-frosted text-primary px-6 py-3 rounded-full text-sm font-bold shadow-lg relative overflow-hidden group hover:scale-105 transition-butter cursor-pointer">
+                  <span className="relative z-10 flex items-center gap-2">
+                    <span className="inline-block w-2 h-2 bg-primary rounded-full animate-pulse-glow" />
+                    भारत का #1 AI Platform
+                  </span>
+                  {/* Animated gradient background */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-gradient" style={{ backgroundSize: '200% 200%' }} />
+                  {/* Border glow */}
+                  <span className="absolute inset-0 border border-primary/30 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
               </div>
 
@@ -76,29 +82,34 @@ const Hero = () => {
                 </p>
               </div>
 
-              {/* CTA Buttons with glass effects */}
+              {/* CTA Buttons with ultra-premium effects */}
               <div className="flex flex-col sm:flex-row gap-5 pt-6 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
                 <Button
                   onClick={() => navigate('/chat')}
                   size="lg"
-                  className="group relative overflow-hidden text-lg px-10 py-7 bg-gradient-to-r from-primary via-primary/90 to-primary shadow-2xl hover:shadow-primary/50 transition-smooth"
+                  className="group relative overflow-hidden text-lg px-10 py-7 bg-gradient-to-r from-primary via-primary/90 to-primary shadow-2xl hover:shadow-primary/50 hover:shadow-2xl transition-luxury hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  <span className="relative z-10 flex items-center gap-3">
+                  <span className="relative z-10 flex items-center gap-3 font-semibold">
                     Get Started
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-butter" />
                   </span>
-                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  {/* Shimmer effect */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/30 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+                  {/* Glow pulse on hover */}
+                  <span className="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-all duration-300" />
                 </Button>
 
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group glass-frosted text-lg px-10 py-7 border-border/50 hover:border-primary/50 shadow-lg transition-smooth"
+                  className="group glass-frosted text-lg px-10 py-7 border-border/50 hover:border-primary/50 shadow-lg transition-luxury hover:scale-[1.02] hover:shadow-xl active:scale-[0.98] relative overflow-hidden"
                 >
-                  <span className="flex items-center gap-3">
-                    <Play className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  <span className="relative z-10 flex items-center gap-3 font-semibold">
+                    <Play className="w-5 h-5 group-hover:scale-110 transition-butter" />
                     Watch Demo
                   </span>
+                  {/* Subtle background pulse on hover */}
+                  <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </Button>
               </div>
 

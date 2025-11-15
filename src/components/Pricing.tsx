@@ -129,11 +129,11 @@ const Pricing = () => {
                   </div>
                 )}
 
-                {/* Card */}
-                <div className={`relative h-full p-8 rounded-3xl backdrop-blur-xl border transition-all duration-500 overflow-hidden ${
+                {/* Card with ultra-premium effects */}
+                <div className={`relative h-full p-8 rounded-3xl backdrop-blur-xl border transition-all duration-700 overflow-hidden hover:scale-[1.02] active:scale-[0.98] ${
                   plan.popular
-                    ? 'bg-card/60 border-primary/50 hover:border-primary shadow-2xl'
-                    : 'bg-card/40 border-border/40 hover:border-border'
+                    ? 'bg-card/60 border-primary/50 hover:border-primary shadow-2xl hover:shadow-primary/30'
+                    : 'bg-card/40 border-border/40 hover:border-border/60 hover:shadow-xl'
                 }`}>
 
                   {/* Top Gradient Line */}
@@ -143,12 +143,14 @@ const Pricing = () => {
                     </div>
                   )}
 
-                  {/* Icon */}
-                  <div className="mb-6">
-                    <div className={`inline-flex w-14 h-14 rounded-2xl items-center justify-center bg-gradient-to-br ${plan.gradient} p-[2px] shadow-xl`}>
-                      <div className="w-full h-full bg-background/95 rounded-2xl flex items-center justify-center">
-                        <Icon className={`w-7 h-7 ${plan.popular ? 'text-primary' : 'text-foreground/70'}`} />
+                  {/* Icon with premium animation */}
+                  <div className="mb-6 group-hover:scale-110 transition-butter">
+                    <div className={`relative inline-flex w-14 h-14 rounded-2xl items-center justify-center bg-gradient-to-br ${plan.gradient} p-[2px] shadow-xl`}>
+                      <div className="w-full h-full bg-background/95 rounded-2xl flex items-center justify-center backdrop-blur-xl">
+                        <Icon className={`w-7 h-7 ${plan.popular ? 'text-primary' : 'text-foreground/70'} group-hover:scale-110 transition-butter`} />
                       </div>
+                      {/* Animated glow on hover */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${plan.gradient} opacity-0 group-hover:opacity-50 blur-xl rounded-2xl transition-opacity duration-500`} />
                     </div>
                   </div>
 
@@ -177,31 +179,41 @@ const Pricing = () => {
                     {plan.description}
                   </p>
 
-                  {/* CTA Button */}
+                  {/* CTA Button with premium effects */}
                   <Button
                     onClick={() => navigate('/chat')}
                     variant={plan.ctaVariant}
-                    className={`w-full mb-8 group/btn ${
-                      plan.popular ? 'shadow-lg' : ''
+                    className={`w-full mb-8 group/btn relative overflow-hidden transition-luxury hover:scale-[1.02] active:scale-[0.98] ${
+                      plan.popular ? 'shadow-lg hover:shadow-primary/50' : 'hover:shadow-lg'
                     }`}
                     size="lg"
                   >
-                    {plan.cta}
-                    <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                    <span className="relative z-10 flex items-center justify-center font-semibold">
+                      {plan.cta}
+                      <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-butter" />
+                    </span>
+                    {plan.popular && (
+                      <span className="absolute inset-0 bg-gradient-to-r from-primary/0 via-white/20 to-primary/0 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-1000" />
+                    )}
                   </Button>
 
-                  {/* Features List */}
+                  {/* Features List with stagger animation */}
                   <div className="space-y-4 pt-6 border-t border-border/30">
                     {plan.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-start gap-3">
-                        <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 ${
-                          plan.popular ? 'bg-primary/20' : 'bg-foreground/10'
+                      <div
+                        key={idx}
+                        className="flex items-start gap-3 group/feature hover:translate-x-1 transition-butter"
+                      >
+                        <div className={`mt-0.5 w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                          plan.popular
+                            ? 'bg-primary/20 group-hover/feature:bg-primary/30 group-hover/feature:scale-110'
+                            : 'bg-foreground/10 group-hover/feature:bg-foreground/15 group-hover/feature:scale-110'
                         }`}>
-                          <Check className={`w-3 h-3 ${
-                            plan.popular ? 'text-primary' : 'text-foreground/70'
+                          <Check className={`w-3 h-3 transition-colors duration-300 ${
+                            plan.popular ? 'text-primary' : 'text-foreground/70 group-hover/feature:text-foreground'
                           }`} strokeWidth={3} />
                         </div>
-                        <span className="text-sm text-foreground/80 leading-relaxed font-normal">
+                        <span className="text-sm text-foreground/80 leading-relaxed font-normal group-hover/feature:text-foreground transition-colors duration-300">
                           {feature}
                         </span>
                       </div>
