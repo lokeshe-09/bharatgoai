@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BharatGoAI - Hero Section (Premium Redesign)</title>
+  <style>
+    /* ============================================
+       HERO SECTION - PURE HTML/CSS VERSION
+       Premium Graphite Elegance Design System
+       ============================================ */
+
+    /* CSS CUSTOM PROPERTIES (Design Tokens) */
+    :root {
+      /* Colors */
+      --color-background: #0B0D0F;
+      --color-surface: #15171A;
+      --color-elevated: #1A1C1F;
+      --color-text-primary: #F6F7F8;
+      --color-text-secondary: #AEB6BD;
+      --color-text-muted: #6B7280;
+      --color-accent: #3ABAD6;
+      --color-metallic: #B8C7CC;
+
+      /* Glass */
+      --glass-overlay: rgba(232, 241, 247, 0.12);
+      --glass-border: rgba(255, 255, 255, 0.06);
+      --glass-frost: rgba(255, 255, 255, 0.02);
+
+      /* Shadows */
+      --shadow-elevation-1: 0 6px 18px rgba(4, 6, 8, 0.45);
+      --shadow-elevation-2: 0 12px 30px rgba(3, 6, 8, 0.55);
+      --shadow-glow-subtle: 0 6px 30px rgba(58, 186, 214, 0.08);
+      --shadow-glow-medium: 0 8px 36px rgba(58, 186, 214, 0.14);
+
+      /* Typography */
+      --font-display: "Satoshi", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+      /* Spacing */
+      --spacing-xs: 4px;
+      --spacing-sm: 8px;
+      --spacing-md: 12px;
+      --spacing-base: 16px;
+      --spacing-lg: 20px;
+      --spacing-xl: 24px;
+      --spacing-2xl: 32px;
+      --spacing-3xl: 40px;
+      --spacing-4xl: 48px;
+      --spacing-6xl: 80px;
+
+      /* Animation */
+      --duration-fast: 180ms;
+      --duration-normal: 360ms;
+      --easing-default: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* BASE STYLES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--color-background);
+      color: var(--color-text-primary);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* HERO CONTAINER */
+    .hero {
+      position: relative;
+      min-height: calc(100vh - 72px); /* Account for navbar */
+      padding: var(--spacing-6xl) var(--spacing-4xl);
+      overflow: hidden;
+      background: var(--color-background);
+    }
+
+    /* Background decorative elements */
+    .hero-background {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .hero-gradient-blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      opacity: 0.15;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .hero-gradient-blob:nth-child(1) {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(58, 186, 214, 0.4), transparent 70%);
+      top: -20%;
+      left: -10%;
+      animation-delay: 0s;
+    }
+
+    .hero-gradient-blob:nth-child(2) {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(58, 186, 214, 0.3), transparent 70%);
+      top: 30%;
+      right: -5%;
+      animation-delay: 2s;
+    }
+
+    .hero-gradient-blob:nth-child(3) {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(184, 199, 204, 0.2), transparent 70%);
+      bottom: -10%;
+      left: 40%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(20px, -20px) scale(1.05); }
+    }
+
+    /* Grid texture overlay */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.01) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.01) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+    }
+
+    /* Content wrapper */
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 1440px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 60% 40%;
+      gap: var(--spacing-6xl);
+      align-items: center;
+    }
+
+    /* LEFT CONTENT SECTION */
+    .hero-left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    /* Premium badge */
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-sm) var(--spacing-base);
+      background: var(--glass-frost);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      backdrop-filter: blur(8px);
+      width: fit-content;
+      animation: fade-in-up 0.6s var(--easing-default);
+    }
+
+    /* Headline */
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--color-text-primary);
+      animation: fade-in-up 0.6s var(--easing-default) 0.1s backwards;
+    }
+
+    .hero-headline-accent {
+      background: linear-gradient(135deg, #3ABAD6 0%, #2A9AB8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Subheading */
+    .hero-subhead {
+      font-size: 20px;
+      line-height: 1.4;
+      color: var(--color-text-secondary);
+      font-weight: 500;
+      animation: fade-in-up 0.6s var(--easing-default) 0.2s backwards;
+    }
+
+    /* Description */
+    .hero-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      max-width: 580px;
+      animation: fade-in-up 0.6s var(--easing-default) 0.3s backwards;
+    }
+
+    /* CTA Buttons */
+    .hero-cta-group {
+      display: flex;
+      gap: var(--spacing-base);
+      flex-wrap: wrap;
+      animation: fade-in-up 0.6s var(--easing-default) 0.4s backwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      padding: 14px 28px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--easing-default);
+      border: none;
+      outline: none;
+    }
+
+    .btn-primary {
+      background: rgba(58, 186, 214, 0.86);
+      color: #FFFFFF;
+      box-shadow: var(--shadow-glow-subtle);
+    }
+
+    .btn-primary:hover {
+      background: rgba(58, 186, 214, 0.96);
+      box-shadow: var(--shadow-glow-medium);
+      transform: translateY(-3px);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--color-text-primary);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.20);
+      transform: translateY(-2px);
+    }
+
+    /* Stats grid */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-base);
+      margin-top: var(--spacing-lg);
+      animation: fade-in-up 0.6s var(--easing-default) 0.5s backwards;
+    }
+
+    .stat-card {
+      padding: var(--spacing-lg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      backdrop-filter: blur(12px);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-accent);
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--color-text-muted);
+      margin-top: var(--spacing-xs);
+      display: block;
+    }
+
+    /* RIGHT CONTENT SECTION - CHAT PANEL */
+    .hero-right {
+      position: relative;
+      height: 600px;
+      animation: fade-in-up 0.6s var(--easing-default) 0.6s backwards;
+    }
+
+    /* CRITICAL: Chat mockup panel - responsive behavior explained */
+    /*
+    DESKTOP (>= 1024px): Fixed 40% width of container, positioned right
+    TABLET (768-1023px): Fixed 45% width, reduced padding
+    MOBILE (< 768px): Stacks BELOW hero content, 100% width, max-height 400px, internal scroll
+    */
+
+    .chat-mockup {
+      position: relative;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-elevation-2);
+      padding: var(--spacing-xl);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden; /* Prevent horizontal overflow */
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: var(--spacing-base);
+      border-bottom: 1px solid var(--glass-border);
+      margin-bottom: var(--spacing-base);
+    }
+
+    .chat-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .chat-status {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--color-text-muted);
+    }
+
+    .status-indicator {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    /* Chat messages container - scrollable on mobile */
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-base);
+      margin-bottom: var(--spacing-base);
+      /* Custom scrollbar for webkit browsers */
+      scrollbar-width: thin;
+      scrollbar-color: rgba(58, 186, 214, 0.3) rgba(255, 255, 255, 0.05);
+    }
+
+    .chat-messages::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    .chat-messages::-webkit-scrollbar-track {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+    }
+
+    .chat-messages::-webkit-scrollbar-thumb {
+      background: rgba(58, 186, 214, 0.3);
+      border-radius: 10px;
+    }
+
+    .message-bubble {
+      padding: var(--spacing-md) var(--spacing-base);
+      border-radius: 12px;
+      max-width: 85%;
+      font-size: 14px;
+      line-height: 1.5;
+      word-wrap: break-word;
+    }
+
+    .message-user {
+      align-self: flex-end;
+      background: rgba(58, 186, 214, 0.15);
+      border: 1px solid rgba(58, 186, 214, 0.25);
+      color: var(--color-text-primary);
+    }
+
+    .message-ai {
+      align-self: flex-start;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      color: var(--color-text-secondary);
+    }
+
+    /* Chat input */
+    .chat-input-wrapper {
+      display: flex;
+      gap: var(--spacing-sm);
+      padding-top: var(--spacing-base);
+      border-top: 1px solid var(--glass-border);
+    }
+
+    .chat-input {
+      flex: 1;
+      padding: var(--spacing-md);
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--glass-border);
+      border-radius: 8px;
+      color: var(--color-text-primary);
+      font-size: 14px;
+      font-family: inherit;
+      outline: none;
+      transition: all var(--duration-fast) var(--easing-default);
+    }
+
+    .chat-input:focus {
+      border-color: rgba(58, 186, 214, 0.40);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .chat-send-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background: rgba(58, 186, 214, 0.86);
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all var(--duration-fast) var(--easing-default);
+    }
+
+    .chat-send-btn:hover {
+      background: rgba(58, 186, 214, 0.96);
+      transform: scale(1.05);
+    }
+
+    /* Animations */
+    @keyframes fade-in-up {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ============================================
+       RESPONSIVE BREAKPOINTS
+       ============================================ */
+
+    /* LARGE DESKTOP (1440px+) */
+    @media (min-width: 1440px) {
+      .hero-headline {
+        font-size: 88px;
+        line-height: 1.02;
+        letter-spacing: -0.025em;
+      }
+    }
+
+    /* TABLET (768-1023px) */
+    @media (max-width: 1023px) {
+      .hero-content {
+        grid-template-columns: 55% 45%;
+        gap: var(--spacing-4xl);
+      }
+
+      .hero-headline {
+        font-size: 52px;
+        line-height: 1.08;
+      }
+
+      .hero-subhead {
+        font-size: 18px;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-right {
+        height: 500px;
+      }
+
+      .chat-mockup {
+        padding: var(--spacing-base);
+      }
+    }
+
+    /* MOBILE (< 768px) - CRITICAL STACKING RULES */
+    @media (max-width: 767px) {
+      .hero {
+        padding: var(--spacing-4xl) var(--spacing-base);
+        min-height: auto;
+      }
+
+      /* STACK VERTICALLY */
+      .hero-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-3xl);
+      }
+
+      .hero-headline {
+        font-size: 34px;
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+      }
+
+      .hero-subhead {
+        font-size: 18px;
+      }
+
+      .hero-description {
+        font-size: 16px;
+      }
+
+      /* Full-width buttons */
+      .hero-cta-group {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      /* Single column stats */
+      .hero-stats {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+      }
+
+      /* CHAT PANEL MOBILE RULES */
+      .hero-right {
+        width: 100%;
+        height: auto;
+        max-height: 400px;
+      }
+
+      .chat-mockup {
+        /* Ensure no horizontal overflow */
+        max-width: 100%;
+        /* Fixed height with internal scroll */
+        height: 400px;
+        max-height: 400px;
+        /* Allow vertical scroll for messages */
+        overflow-y: auto;
+        padding: var(--spacing-base);
+      }
+
+      .chat-messages {
+        /* Messages container scrolls within panel */
+        max-height: 250px;
+      }
+
+      .message-bubble {
+        max-width: 90%;
+        font-size: 13px;
+      }
+    }
+
+    /* EXTRA SMALL (< 480px) */
+    @media (max-width: 479px) {
+      .hero {
+        padding: var(--spacing-2xl) var(--spacing-md);
+      }
+
+      .hero-headline {
+        font-size: 28px;
+      }
+
+      .hero-subhead {
+        font-size: 16px;
+      }
+
+      .stat-value {
+        font-size: 24px;
+      }
+
+      .stat-label {
+        font-size: 11px;
+      }
+    }
+
+    /* REDUCED MOTION SUPPORT */
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- HERO SECTION -->
+  <section class="hero" role="main" aria-label="Hero section">
+
+    <!-- Background elements -->
+    <div class="hero-background" aria-hidden="true">
+      <div class="hero-gradient-blob"></div>
+      <div class="hero-gradient-blob"></div>
+      <div class="hero-gradient-blob"></div>
+      <div class="hero-grid"></div>
+    </div>
+
+    <!-- Main content -->
+    <div class="hero-content">
+
+      <!-- LEFT CONTENT -->
+      <div class="hero-left">
+
+        <!-- Premium badge -->
+        <span class="hero-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+          </svg>
+          India's #1 Enterprise AI Platform
+        </span>
+
+        <!-- Headline -->
+        <h1 class="hero-headline">
+          India's Most <span class="hero-headline-accent">Trusted</span> AI Platform
+        </h1>
+
+        <!-- Subheading -->
+        <p class="hero-subhead">
+          Built for Real Work, Real Languages, and Real Businesses
+        </p>
+
+        <!-- Description -->
+        <p class="hero-description">
+          Experience enterprise-grade AI that understands India's diverse business landscape. Secure, compliant, and optimized for mission-critical applications across all industries.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="/chat" class="btn btn-primary">
+            Try It Free
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+          <a href="/docs" class="btn btn-secondary">
+            Read Documentation
+          </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats">
+          <div class="stat-card">
+            <span class="stat-value">12.8K+</span>
+            <span class="stat-label">Active Users</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">2.8M+</span>
+            <span class="stat-label">Queries Processed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">15+</span>
+            <span class="stat-label">Languages</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- RIGHT CONTENT - CHAT MOCKUP PANEL -->
+      <!-- RESPONSIVE BEHAVIOR:
+           Desktop/Tablet: Fixed width (40%/45%), positioned to the right
+           Mobile: Stacks BELOW hero content, 100% width, max-height 400px with internal scroll
+           No horizontal overflow at any breakpoint
+      -->
+      <div class="hero-right">
+        <div class="chat-mockup">
+
+          <!-- Chat header -->
+          <div class="chat-header">
+            <span class="chat-title">BharatGo AI Assistant</span>
+            <div class="chat-status">
+              <span class="status-indicator"></span>
+              <span>Online</span>
+            </div>
+          </div>
+
+          <!-- Chat messages (scrollable) -->
+          <div class="chat-messages">
+
+            <div class="message-bubble message-user">
+              What industries do you serve in India?
+            </div>
+
+            <div class="message-bubble message-ai">
+              We serve 6 major industries: Enterprise B2B, E-Commerce, Education, Healthcare, Startups, and Marketing. Our AI solutions are customized for India's business landscape with multilingual support for 15+ languages including Hindi, Tamil, Telugu, and more.
+            </div>
+
+            <div class="message-bubble message-user">
+              How secure is your platform?
+            </div>
+
+            <div class="message-bubble message-ai">
+              BharatGoAI is ISO 27001 certified with 99.9% uptime SLA. We offer enterprise-grade encryption, on-premise deployment options, and full compliance with Indian data protection regulations.
+            </div>
+
+            <div class="message-bubble message-user">
+              Can I try it for free?
+            </div>
+
+            <div class="message-bubble message-ai">
+              Yes! Our Starter plan includes a free trial with 1,000 queries/month. No credit card required. You can upgrade anytime as your needs grow.
+            </div>
+
+          </div>
+
+          <!-- Chat input -->
+          <div class="chat-input-wrapper">
+            <input
+              type="text"
+              class="chat-input"
+              placeholder="Ask anything about BharatGoAI..."
+              aria-label="Chat input"
+            />
+            <button class="chat-send-btn" aria-label="Send message">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+              </svg>
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</body>
+</html>
